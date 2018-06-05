@@ -34,6 +34,9 @@ public class SettingsActivity extends AppCompatActivity {
         Log.d(TAG,"onCreate is starting");
         mContext = SettingsActivity.this;
 
+        //  TODO 90 ) Calling createSettingsItems
+        createSettingsItems();
+
     }
 
 

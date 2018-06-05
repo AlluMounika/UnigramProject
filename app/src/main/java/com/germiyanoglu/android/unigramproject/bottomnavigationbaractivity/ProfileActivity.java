@@ -1,7 +1,6 @@
 package com.germiyanoglu.android.unigramproject.bottomnavigationbaractivity;
 
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -79,14 +78,14 @@ public class ProfileActivity extends AppCompatActivity {
         //  TODO 71 ) Defining menu icon in Tool bar-->
         //  TODO 87 ) Deleting if part because of not using menu properties
         //  TODO 88 ) Add more icon as an intent functionality via setOnClickListener
-        moreIcon.setOnClickListener(new View.OnClickListener() {
+        /*moreIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.d(TAG,"moreIcon's setOnClickListener is working");
                 Intent intent = new Intent(ProfileActivity.this,SettingsActivity.class);
                 startActivity(intent);
             }
-        });
+        });*/
 
 
     }
@@ -106,5 +105,11 @@ public class ProfileActivity extends AppCompatActivity {
         progressBar.setVisibility(View.GONE);
     }
 
+
+    public void openSettings(View view){
+        Log.d(TAG,"moreIcon's setOnClickListener is working");
+        Intent intent = new Intent(ProfileActivity.this,SettingsActivity.class);
+        startActivity(intent);
+    }
 }
 
