@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- TODO 8 ) Designing center part of MainActivity -->
+<!-- TODO 9 ) Using merge tag without using RelativeLayout -->
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- TODO 10 ) Designing View Page -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true">
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/center_viewpager_main"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </android.support.v4.view.ViewPager>
+
+    </RelativeLayout>
+
+</merge>

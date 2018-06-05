@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <RelativeLayout
+        android:id="@+id/profile_information_section"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <RelativeLayout
+            android:id="@+id/profile_information_section_profile_bar"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <!--  TODO 76 ) Adding top tool bar of profile -->
+            <include layout="@layout/top_profile_bar"/>
+
+        </RelativeLayout>
+
+        <!-- TODO 77 ) Adding top profile information (profile image, information section)  -->
+        <RelativeLayout
+            android:id="@+id/profile_information_section_profile_relativelayout"
+            android:layout_below="@+id/profile_information_section_profile_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    >
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/profile_information_section_profile_image"
+                        android:layout_width="90dp"
+                        android:layout_height="90dp"
+                        android:layout_centerHorizontal="true"
+                        app:civ_border_color="#FF000000"
+                        app:civ_border_width="1dp"
+                        />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:layout_margin="5dp"
+                    >
+
+                    <include layout="@layout/top_profile_information_section"/>
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+
+        <!-- TODO 78 ) Adding User Information  -->
+        <LinearLayout
+            android:id="@+id/profile_information_section_user_information"
+            android:layout_below="@+id/profile_information_section_profile_relativelayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:padding="15dp"
+            android:orientation="vertical">
+
+           <TextView
+               android:id="@+id/profile_information_section_profile_name"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="Noyan"
+               android:textSize="15sp"
+               android:textStyle="bold"
+               android:textColor="@android:color/black"/>
+
+            <TextView
+                android:id="@+id/profile_information_section_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Description"
+                android:textSize="15sp"
+                android:textColor="@android:color/black"/>
+
+            <TextView
+                android:id="@+id/profile_information_section_website"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Noyan"
+                android:textSize="15sp"
+                android:textColor="@android:color/holo_green_light"/>
+
+
+        </LinearLayout>
+
+        <!-- TODO 78 ) Adding GridView for displaying images  -->
+        <RelativeLayout
+            android:id="@+id/profile_information_section_image"
+            android:layout_below="@+id/profile_information_section_user_information"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="50dp">
+            
+            <GridView
+                android:id="@+id/profile_information_section_image_gridview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:numColumns="3"
+                android:stretchMode="columnWidth"
+                android:gravity="center"
+                >
+
+            </GridView>
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+
+</merge>
+
+

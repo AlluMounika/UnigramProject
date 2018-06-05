@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- TODO 81 ) Designing Settings Layout -->
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/settings_relativelayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/settings_top_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!-- TODO 84 ) Including setting top bar-->
+            <include layout="@layout/settings_top"/>
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/settings_content"
+            android:layout_below="@+id/settings_top_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <!-- TODO 86 ) Including setting content-->
+            <include layout="@layout/settings_content"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</android.support.design.widget.CoordinatorLayout>

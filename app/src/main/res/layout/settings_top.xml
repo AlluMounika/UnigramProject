@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- TODO 83 ) Desigining settings bar-->
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/profile_top_bar_appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/white">
+
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/profile_top_bar_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <RelativeLayout
+                android:id="@+id/profile_top_bar_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/profile_top_bar_textview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Settings"
+                    android:layout_centerVertical="true"
+                    android:textSize="15sp"
+                    android:textColor="@android:color/black"
+                    android:layout_marginLeft="10dp"
+                    />
+
+
+
+            </RelativeLayout>
+
+
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+
+</merge>

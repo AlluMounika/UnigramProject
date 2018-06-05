@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- TODO 11 ) Designing Bottom navigation bar of MainActivity -->
+<!-- TODO 12 ) Using merge tag without using RelativeLayout -->
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!-- TODO 13 ) Designing Bottom navigation bar -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true">
+
+        <com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx
+            android:id="@+id/bottomNavigationView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/white_bottom_navigation_main"
+
+            app:menu="@menu/bottom_navigation_menu">
+            <!-- TODO 19 ) Add menu in the bottom navigation bar -->
+
+
+
+        </com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx>
+
+    </RelativeLayout>
+
+</merge>

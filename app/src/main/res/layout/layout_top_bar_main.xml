@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- TODO 4 ) Designing top bar of MainActivity -->
+<!-- TODO 5 ) Using merge tag without using RelativeLayout -->
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- TODO 6 ) Designing toolbar -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true">
+
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+                <android.support.design.widget.TabLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tabs"
+                    android:background="@color/white"/>
+
+
+        </android.support.design.widget.AppBarLayout>
+
+
+    </RelativeLayout>
+
+</merge>

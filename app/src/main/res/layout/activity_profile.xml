@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!--  TODO 73 ) Adding top profile bar in profile xml-->
+        <include layout="@layout/profile_information_section"/>
+
+        <!--  TODO 74 ) Adding bottom navigation bar in profile xml-->
+        <include layout="@layout/layout_bottom_navigation_main"/>
+
+
+        <!-- TODO 79 ) Adding ProgressBar  -->
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="100dp"
+            />
+
+
+    </RelativeLayout>
+
+
+</android.support.design.widget.CoordinatorLayout>

@@ -1,0 +1,59 @@
+{
+  "project_info": {
+    "project_number": "65828927298",
+    "firebase_url": "https://umproject-86a0a.firebaseio.com",
+    "project_id": "umproject-86a0a",
+    "storage_bucket": "umproject-86a0a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:65828927298:android:a1145c8625e1e34f",
+        "android_client_info": {
+          "package_name": "com.germiyanoglu.android.unigramproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "65828927298-siichl4jok9v06cp29j10kikopc9htlm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.germiyanoglu.android.unigramproject",
+            "certificate_hash": "ade1b5528ed3098c9cdf56e8b436d70e57417492"
+          }
+        },
+        {
+          "client_id": "65828927298-qe2o9dqqgv9gj0oildhp3kpd3ik7nhml.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "65828927298-qe2o9dqqgv9gj0oildhp3kpd3ik7nhml.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC91IwJDZQmtyphW9ErWVLHkwtpuZeIbHE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "65828927298-qe2o9dqqgv9gj0oildhp3kpd3ik7nhml.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
