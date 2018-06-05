@@ -5,6 +5,7 @@ import android.opengl.EGLExt;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -24,7 +25,11 @@ public class SettingsActivity extends AppCompatActivity {
     @BindView(R.id.settings_content_items)
     ListView listView;
 
+    @BindView(R.id.settings_top_bar_toolbar)
+    Toolbar toolbar;
+
     private Context mContext;
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -34,9 +39,11 @@ public class SettingsActivity extends AppCompatActivity {
         Log.d(TAG,"onCreate is starting");
         mContext = SettingsActivity.this;
 
-        //  TODO 90 ) Calling createSettingsItems
+        //  TODO 91 ) Calling createSettingsItems
         createSettingsItems();
 
+        //  TODO 92 ) Calling enableBackButton
+        enableBackButton();
     }
 
 
@@ -54,5 +61,12 @@ public class SettingsActivity extends AppCompatActivity {
         listView.setAdapter(adapter);
 
 
+    }
+
+
+    private void enableBackButton(){
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 }
