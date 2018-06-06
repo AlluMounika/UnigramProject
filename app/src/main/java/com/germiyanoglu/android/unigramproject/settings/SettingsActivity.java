@@ -52,6 +52,8 @@ public class SettingsActivity extends AppCompatActivity {
         Log.d(TAG,"onCreate is starting");
         mContext = SettingsActivity.this;
 
+        //  TODO 91 ) Calling createSettingsItems
+        createSettingsItems();
 
         //  TODO 92 ) Calling enableBackButton
         enableBackButton();
@@ -59,8 +61,6 @@ public class SettingsActivity extends AppCompatActivity {
         //  TODO 114 ) Calling enableItemsFragement
         enableItemsFragement();
 
-        //  TODO 91 ) Calling createSettingsItems
-        createSettingsItems();
 
     }
 
