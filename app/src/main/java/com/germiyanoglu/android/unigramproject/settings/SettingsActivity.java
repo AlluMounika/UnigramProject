@@ -41,7 +41,7 @@ public class SettingsActivity extends AppCompatActivity {
     @BindView(R.id.settings_fragment_item_viewpager_main)
     ViewPager viewPager;
 
-    @BindView(R.id.settings_fragment_item_viewpager_relativelayout)
+    @BindView(R.id.settings_relativelayout)
     RelativeLayout relativeLayout;
 
     @Override
