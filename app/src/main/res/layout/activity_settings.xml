@@ -7,7 +7,7 @@
     android:layout_height="match_parent">
 
     <!-- TODO 112 ) Adding View Pager -->
-    <include layout="@layout/layout_center_main"/>
+    <include layout="@layout/layout_settings_fragement_item"/>
 
     <RelativeLayout
         android:id="@+id/settings_relativelayout"

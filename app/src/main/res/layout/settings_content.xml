@@ -1,37 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <!-- TODO 85 ) Designing setting content-->
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="10dp">
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <TextView
-        android:id="@+id/settings_content_title"
+    <RelativeLayout
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Account Settings"
-        android:textSize="15dp"
-        android:textColor="@android:color/black"
-        />
+        android:padding="10dp">
 
-    <View
-        android:id="@+id/settings_content_borderline"
-        android:layout_below="@id/settings_content_title"
-        android:layout_width="wrap_content"
-        android:layout_height="1dp"
-        android:layout_marginTop="2dp"
-        android:background="@android:color/darker_gray"
-        />
-    
-    <ListView
-        android:id="@+id/settings_content_items"
-        android:layout_below="@+id/settings_content_borderline"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/settings_content_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Account Settings"
+            android:textColor="@android:color/black"
+            android:textSize="15dp" />
+
+        <View
+            android:id="@+id/settings_content_borderline"
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:layout_below="@id/settings_content_title"
+            android:layout_marginTop="2dp"
+            android:background="@android:color/darker_gray" />
+
+        <ListView
+            android:id="@+id/settings_content_items"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/settings_content_borderline">
 
 
-    </ListView>
+        </ListView>
 
-</RelativeLayout>
+    </RelativeLayout>
+</merge>

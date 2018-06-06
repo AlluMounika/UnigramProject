@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  TODO 115 ) Settings Fragment Item -->
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- TODO 10 ) Designing View Page -->
+    <RelativeLayout
+        android:id="@+id/settings_fragment_item_viewpager_relativelayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true">
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/settings_fragment_item_viewpager_main"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </android.support.v4.view.ViewPager>
+
+    </RelativeLayout>
+
+</merge>

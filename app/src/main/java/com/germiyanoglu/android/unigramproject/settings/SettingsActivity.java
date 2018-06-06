@@ -38,10 +38,10 @@ public class SettingsActivity extends AppCompatActivity {
     private SettingsItemsPagerAdapter settingsItemsPagerAdapter;
 
     // TODO 114 ) Defining ViewPager of settings layout
-    @BindView(R.id.center_viewpager_main)
+    @BindView(R.id.settings_fragment_item_viewpager_main)
     ViewPager viewPager;
 
-    @BindView(R.id.center_viewpager_relativelayout)
+    @BindView(R.id.settings_fragment_item_viewpager_relativelayout)
     RelativeLayout relativeLayout;
 
     @Override
@@ -79,7 +79,6 @@ public class SettingsActivity extends AppCompatActivity {
         listView.setAdapter(adapter);
 
         //  TODO 115 ) Calling any item based on Fragment according to its position
-
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
