@@ -12,7 +12,7 @@ import com.germiyanoglu.android.unigramproject.R;
 import com.germiyanoglu.android.unigramproject.bottomnavigationbaractivity.LikesActivity;
 import com.germiyanoglu.android.unigramproject.bottomnavigationbaractivity.ProfileActivity;
 import com.germiyanoglu.android.unigramproject.bottomnavigationbaractivity.SearchActivity;
-import com.germiyanoglu.android.unigramproject.bottomnavigationbaractivity.ShareActivity;
+import com.germiyanoglu.android.unigramproject.bottomnavigationbaractivity.AddActivity;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
 // TODO 21 ) Creating BottomNavigationBarAnimation to set false of animation
@@ -44,8 +44,8 @@ public class BottomNavigationBarAnimation {
                     case R.id.ic_likes:
                         openLikeActivity(context);  // ICON_NUMBER_MENU = 1;
                         break;
-                    case R.id.ic_share:
-                        openShareActivity(context);  // ICON_NUMBER_MENU = 2;
+                    case R.id.ic_add:
+                        openAddActivity(context);  // ICON_NUMBER_MENU = 2;
                         break;
                     case R.id.ic_search:
                         openSearchActivity(context); // ICON_NUMBER_MENU = 3;
@@ -80,9 +80,9 @@ public class BottomNavigationBarAnimation {
     }
 
     // TODO 39 ) Opening openShareActivity
-    private static void openShareActivity(final Context context){
+    private static void openAddActivity(final Context context){
         Log.d(TAG,"openShareActivity is working");
-        Intent intent = new Intent(context, ShareActivity.class);
+        Intent intent = new Intent(context, AddActivity.class);
         context.startActivity(intent);
     }
 

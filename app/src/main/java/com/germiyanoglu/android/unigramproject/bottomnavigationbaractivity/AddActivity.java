@@ -13,10 +13,10 @@ import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-// TODO 27 ) Creating Share Activity
-public class ShareActivity extends AppCompatActivity {
+// TODO 27 ) Creating Add Activity
+public class AddActivity extends AppCompatActivity {
 
-    private static final String TAG = ShareActivity.class.getName();
+    private static final String TAG = AddActivity.class.getName();
     private static final int ICON_NUMBER_MENU = 2;
 
     @BindView(R.id.bottomNavigationView)
@@ -41,7 +41,7 @@ public class ShareActivity extends AppCompatActivity {
         BottomNavigationBarAnimation.setBottomNavigationBarAnimation(bottomNavigationViewEx);
 
         // TODO 50 ) Providing navigation process between icons in BottomNavigationBar
-        BottomNavigationBarAnimation.navitageIcon(ShareActivity.this,bottomNavigationViewEx);
+        BottomNavigationBarAnimation.navitageIcon(AddActivity.this,bottomNavigationViewEx);
 
         // TODO 51 ) When icon is clicked , icon must be active
         Menu menu = bottomNavigationViewEx.getMenu();

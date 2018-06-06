@@ -6,6 +6,7 @@
 
     <!-- TODO 10 ) Designing View Page -->
     <RelativeLayout
+        android:id="@+id/center_viewpager_relativelayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentTop="true">

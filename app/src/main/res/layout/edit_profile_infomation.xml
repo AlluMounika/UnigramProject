@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--   TODO 97 )  Edit Profile Photo and and Information -->
+
+<merge
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <ScrollView
+        android:id="@+id/edit_profile_information_scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!--   TODO 98 )  Edit Profile Photo  -->
+        <RelativeLayout
+            android:id="@+id/edit_profile_information_profile_image_relativelayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:padding="15dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/edit_profile_information_section_profile_image"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_centerHorizontal="true"
+                app:civ_border_color="#FF000000"
+                app:civ_border_width="1dp"
+                />
+
+            <TextView
+                android:id="@+id/edit_profile_information_section_textview"
+                android:layout_below="@+id/edit_profile_information_section_profile_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:text="Change Profile Image"
+                android:gravity="center"
+                android:textColor="@android:color/holo_blue_light"
+                />
+
+            <!--   TODO 104 )  Edit Profile Information Title -->
+            <TextView
+                android:id="@+id/edit_profile_information_profile_information_textview"
+                android:layout_below="@+id/edit_profile_information_section_textview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Profile Information"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:textSize="20sp"/>
+
+
+            <!--   TODO 99 )  Edit Profile UserName  -->
+            <RelativeLayout
+                android:id="@+id/edit_profile_information_profile_username_information_relativelayout"
+                android:layout_below="@+id/edit_profile_information_profile_information_textview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp">
+
+                <ImageView
+                    android:id="@+id/edit_profile_information_profile_username_information_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_name"
+                    />
+
+                <EditText
+                    android:id="@+id/edit_profile_information_profile_username_information_name_edittext"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/edit_profile_information_profile_username_information_icon"
+                    android:hint="Enter your username"
+                    />
+
+            </RelativeLayout>
+
+            <!--   TODO 100 )  Edit Profile Name and Surname  -->
+            <RelativeLayout
+                android:id="@+id/edit_profile_information_profile_name_surname_relativelayout"
+                android:layout_below="@+id/edit_profile_information_profile_username_information_relativelayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp">
+
+                <ImageView
+                    android:id="@+id/edit_profile_information_profile_name_surname_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_name_surname"
+                    />
+
+                <EditText
+                    android:id="@+id/edit_profile_information_profile_information_name_surname_edittext"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/edit_profile_information_profile_name_surname_icon"
+                    android:hint="Enter your Name and Surname"
+                    />
+
+            </RelativeLayout>
+
+            <!--   TODO 101 )  Edit Profile Website  -->
+            <RelativeLayout
+                android:id="@+id/edit_profile_information_profile_website_relativelayout"
+                android:layout_below="@+id/edit_profile_information_profile_name_surname_relativelayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp">
+
+                <ImageView
+                    android:id="@+id/edit_profile_information_profile_website_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_website"
+                    />
+
+                <EditText
+                    android:id="@+id/edit_profile_information_profile_information_website_edittext"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/edit_profile_information_profile_website_icon"
+                    android:hint="Enter your Website"
+                    />
+
+            </RelativeLayout>
+
+
+            <!--   TODO 102 )  Edit Profile Description  -->
+            <RelativeLayout
+                android:id="@+id/edit_profile_information_profile_description_relativelayout"
+                android:layout_below="@+id/edit_profile_information_profile_website_relativelayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp">
+
+                <ImageView
+                    android:id="@+id/edit_profile_information_profile_description_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_information"
+                    />
+
+                <EditText
+                    android:id="@+id/edit_profile_information_profile_information_description_edittext"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/edit_profile_information_profile_description_icon"
+                    android:hint="Enter your Personel Description"
+                    />
+
+            </RelativeLayout>
+
+
+            <!--   TODO 103 )  Edit Profile Personel Private Information Title  -->
+            <TextView
+                android:id="@+id/edit_profile_information_profile_personel_private_information_textview"
+                android:layout_below="@+id/edit_profile_information_profile_description_relativelayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Personel Private Information"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:textSize="20sp"/>
+
+
+            <!--   TODO 105 )  Edit Profile Email  -->
+            <RelativeLayout
+                android:id="@+id/edit_profile_information_profile_email_relativelayout"
+                android:layout_below="@+id/edit_profile_information_profile_personel_private_information_textview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp">
+
+                <ImageView
+                    android:id="@+id/edit_profile_information_profile_email_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_information"
+                    />
+
+                <EditText
+                    android:id="@+id/edit_profile_information_profile_information_email_edittext"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/edit_profile_information_profile_email_icon"
+                    android:hint="Enter your Website"
+                    />
+
+            </RelativeLayout>
+
+
+            <!--   TODO 106 )  Edit Profile Phone Number  -->
+            <RelativeLayout
+                android:id="@+id/edit_profile_information_profile_phonenumber_relativelayout"
+                android:layout_below="@+id/edit_profile_information_profile_email_relativelayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp">
+
+                <ImageView
+                    android:id="@+id/edit_profile_information_profile_phonenumber_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_phonenumber"
+                    />
+
+                <EditText
+                    android:id="@+id/edit_profile_information_profile_information_phonenumber_edittext"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/edit_profile_information_profile_phonenumber_icon"
+                    android:hint="Enter your Phone number"
+                    />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+
+    </ScrollView>
+    
+</merge>

@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.germiyanoglu.android.unigramproject">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -18,7 +21,7 @@
         </activity>
 
         <activity android:name=".bottomnavigationbaractivity.SearchActivity"/>
-        <activity android:name=".bottomnavigationbaractivity.ShareActivity"/>
+        <activity android:name=".bottomnavigationbaractivity.AddActivity"/>
         <activity android:name=".bottomnavigationbaractivity.LikesActivity"/>
         <activity android:name=".bottomnavigationbaractivity.ProfileActivity"/>
 
