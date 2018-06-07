@@ -7,6 +7,8 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -14,7 +16,9 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 
 import com.germiyanoglu.android.unigramproject.R;
+import com.germiyanoglu.android.unigramproject.bottomnavigationbar.BottomNavigationBarAnimation;
 import com.germiyanoglu.android.unigramproject.utils.SettingsItemsPagerAdapter;
+import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
 import java.util.ArrayList;
 
@@ -25,6 +29,8 @@ import butterknife.ButterKnife;
 public class SettingsActivity extends AppCompatActivity {
 
     private static final String TAG = SettingsActivity.class.getName();
+
+    private static final int ICON_NUMBER_MENU = 4;
 
     @BindView(R.id.settings_content_items)
     ListView listView;
@@ -44,6 +50,9 @@ public class SettingsActivity extends AppCompatActivity {
     @BindView(R.id.settings_relativelayout)
     RelativeLayout relativeLayout;
 
+    @BindView(R.id.bottomNavigationView)
+    BottomNavigationViewEx bottomNavigationViewEx;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,7 +70,8 @@ public class SettingsActivity extends AppCompatActivity {
         //  TODO 114 ) Calling enableItemsFragement
         enableItemsFragement();
 
-
+        // TODO 120 ) Calling bottomNavigationViewMenu
+        bottomNavigationViewMenu();
     }
 
 
@@ -108,5 +118,20 @@ public class SettingsActivity extends AppCompatActivity {
         viewPager.setCurrentItem(fragmentNumber);
     }
 
+
+    // TODO 117 ) Creating Bottom Navigation View Menu
+    private void bottomNavigationViewMenu(){
+        Log.d(TAG,"bottomNavigationViewMenu is starting");
+        BottomNavigationBarAnimation.setBottomNavigationBarAnimation(bottomNavigationViewEx);
+
+        // TODO 42 ) Providing navigation process between icons in BottomNavigationBar
+        BottomNavigationBarAnimation.navitageIcon(this,bottomNavigationViewEx);
+
+        // TODO 43 ) When icon is clicked , icon must be active
+        Menu menu = bottomNavigationViewEx.getMenu();
+        MenuItem menuItem = menu.getItem(ICON_NUMBER_MENU);
+        menuItem.setChecked(true);
+
+    }
 
 }

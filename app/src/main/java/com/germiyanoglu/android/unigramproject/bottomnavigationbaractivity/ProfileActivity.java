@@ -8,16 +8,20 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 
 import com.germiyanoglu.android.unigramproject.R;
 import com.germiyanoglu.android.unigramproject.bottomnavigationbar.BottomNavigationBarAnimation;
 import com.germiyanoglu.android.unigramproject.settings.SettingsActivity;
+import com.germiyanoglu.android.unigramproject.utils.AsyncTaskLoadImage;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
+import butterknife.BindDimen;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 // TODO 33 ) Creating Share Activity
 public class ProfileActivity extends AppCompatActivity {
@@ -31,11 +35,14 @@ public class ProfileActivity extends AppCompatActivity {
     @BindView(R.id.profile_top_bar_toolbar)
     Toolbar toolbar;
 
-    @BindView(R.id.profile_top_bar_settings_icon)
-    ImageView moreIcon;
+    @BindView(R.id.profile_information_section_profile_image)
+    CircleImageView profileImage;
 
     @BindView(R.id.progressBar)
     ProgressBar progressBar;
+
+    @BindView(R.id.profile_information_section_image_gridview)
+    GridView gridViewProfilePost;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +58,8 @@ public class ProfileActivity extends AppCompatActivity {
         //  TODO 90 ) Calling setGoneProgressBar
         setGoneProgressBar();
 
+        // TODO 119 ) Calling putProfileImageCircleImageView
+        putProfileImageCircleImageView();
 
     }
 
@@ -110,6 +119,18 @@ public class ProfileActivity extends AppCompatActivity {
         Log.d(TAG,"moreIcon's setOnClickListener is working");
         Intent intent = new Intent(ProfileActivity.this,SettingsActivity.class);
         startActivity(intent);
+    }
+
+    // TODO 118 ) Putting ProfileImage in CircleImageView
+    private void putProfileImageCircleImageView(){
+        Log.d(TAG,"setCircleImageView is working");
+        String imgUrl = "http://cdn.journaldev.com/wp-content/uploads/2016/11/android-image-picker-project-structure.png";
+        new AsyncTaskLoadImage(profileImage).execute(imgUrl);
+    }
+
+
+    private void createGridViewPost(){
+
     }
 }
 

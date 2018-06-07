@@ -26,7 +26,8 @@
         <RelativeLayout
             android:id="@+id/edit_profile_information"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="35dp">
 
             <include layout="@layout/edit_profile_infomation"/>
 
