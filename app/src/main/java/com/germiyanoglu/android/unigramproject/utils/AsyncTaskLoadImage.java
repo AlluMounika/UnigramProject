@@ -7,6 +7,7 @@ import android.graphics.ColorMatrix;
 import android.graphics.ColorMatrixColorFilter;
 import android.graphics.Paint;
 import android.os.AsyncTask;
+import android.widget.ImageView;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -22,6 +23,7 @@ public class AsyncTaskLoadImage extends AsyncTask<String, String, Bitmap> {
     public AsyncTaskLoadImage(CircleImageView imageView) {
         this.circleImageView = imageView;
     }
+
 
     @Override
     protected Bitmap doInBackground(String... params) {
@@ -52,7 +54,9 @@ public class AsyncTaskLoadImage extends AsyncTask<String, String, Bitmap> {
             ColorMatrixColorFilter f = new ColorMatrixColorFilter(cm);
             paint.setColorFilter(f);
             c.drawBitmap(bitmap, 0, 0, paint);
-            circleImageView.setImageBitmap(bmpGrayscale);
+            if(circleImageView != null){
+                circleImageView.setImageBitmap(bmpGrayscale);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

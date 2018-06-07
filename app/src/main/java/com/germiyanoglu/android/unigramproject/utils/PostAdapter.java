@@ -11,12 +11,15 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 
 import com.germiyanoglu.android.unigramproject.R;
+import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
 // TODO 120 ) Designing GridViewPostAdapter to display posts in GridView
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostAdapterViewHolder>{
+
+    private static final String TAG = PostAdapter.class.getName();
 
     // TODO  121) Defining Context
     private Context mContext;
@@ -41,13 +44,27 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostAdapterVie
     }
 
     @Override
-    public void onBindViewHolder(@NonNull PostAdapter.PostAdapterViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final PostAdapter.PostAdapterViewHolder holder, int position) {
         String imageUrl = imgUrls.get(position);
+        System.out.println(TAG + " imageUrl is " + imageUrl);
         if(imageUrl==null){
             holder.progressBar.setVisibility(View.GONE);
         }else{
             holder.progressBar.setVisibility(View.VISIBLE);
             Picasso.with(mContext).load(imageUrl).into(holder.postImage);
+
+            Picasso.with(mContext)
+                    .load(imageUrl)
+                    .into(holder.postImage, new Callback() {
+                        @Override
+                        public void onSuccess() {
+                            holder.progressBar.setVisibility(View.GONE);
+                        }
+                        @Override
+                        public void onError() {
+
+                        }
+                    });
         }
 
     }
