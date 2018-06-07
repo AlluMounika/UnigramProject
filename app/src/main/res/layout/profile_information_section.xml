@@ -115,16 +115,13 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="50dp">
             
-            <GridView
-                android:id="@+id/profile_information_section_image_gridview"
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/profile_information_section_image_recyleview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:numColumns="3"
-                android:stretchMode="columnWidth"
-                android:gravity="center"
                 >
 
-            </GridView>
+            </android.support.v7.widget.RecyclerView>
 
         </RelativeLayout>
 

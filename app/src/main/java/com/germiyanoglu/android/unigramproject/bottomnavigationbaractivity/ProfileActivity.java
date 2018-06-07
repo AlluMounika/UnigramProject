@@ -3,20 +3,27 @@ package com.germiyanoglu.android.unigramproject.bottomnavigationbaractivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.GridLayout;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.ListAdapter;
 import android.widget.ProgressBar;
 
 import com.germiyanoglu.android.unigramproject.R;
 import com.germiyanoglu.android.unigramproject.bottomnavigationbar.BottomNavigationBarAnimation;
 import com.germiyanoglu.android.unigramproject.settings.SettingsActivity;
 import com.germiyanoglu.android.unigramproject.utils.AsyncTaskLoadImage;
+import com.germiyanoglu.android.unigramproject.utils.PostAdapter;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
+
+import java.util.ArrayList;
 
 import butterknife.BindDimen;
 import butterknife.BindView;
@@ -41,8 +48,8 @@ public class ProfileActivity extends AppCompatActivity {
     @BindView(R.id.progressBar)
     ProgressBar progressBar;
 
-    @BindView(R.id.profile_information_section_image_gridview)
-    GridView gridViewProfilePost;
+    @BindView(R.id.profile_information_section_image_recyleview)
+    RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +67,9 @@ public class ProfileActivity extends AppCompatActivity {
 
         // TODO 119 ) Calling putProfileImageCircleImageView
         putProfileImageCircleImageView();
+
+        // TODO 129 ) Calling sampleGridViewPost
+        sampleGridViewPost();
 
     }
 
@@ -128,9 +138,36 @@ public class ProfileActivity extends AppCompatActivity {
         new AsyncTaskLoadImage(profileImage).execute(imgUrl);
     }
 
+    // TODO : 127 ) Adding sample imageurl in the arraylist
+    private void sampleGridViewPost() {
 
-    private void createGridViewPost(){
+        ArrayList<String> imageUrl = new ArrayList<>();
+        imageUrl.add("http://www.gstatic.com/webp/gallery/1.jpg");
+        imageUrl.add("http://www.gstatic.com/webp/gallery/2.jpg");
+        imageUrl.add("http://www.gstatic.com/webp/gallery/3.jpg");
+        imageUrl.add("http://www.gstatic.com/webp/gallery/4.jpg");
+        imageUrl.add("http://www.gstatic.com/webp/gallery/5.jpg");
+        imageUrl.add("http://www.gstatic.com/webp/gallery/1.jpg");
+        imageUrl.add("http://www.gstatic.com/webp/gallery/2.jpg");
+        imageUrl.add("http://www.gstatic.com/webp/gallery/3.jpg");
+        imageUrl.add("http://www.gstatic.com/webp/gallery/4.jpg");
+        imageUrl.add("http://www.gstatic.com/webp/gallery/5.jpg");
 
+        setImageGridView(imageUrl);
+    }
+
+    // TODO : 128 ) Setting PostAdapter in GridView to display images in gridview
+    private void setImageGridView(ArrayList<String> imageUrl){
+
+        int orientation = GridLayout.VERTICAL;
+        int span = getResources().getInteger(R.integer.gridlayout_span);
+        boolean reverseLayout = false;
+        GridLayoutManager layoutManager = new GridLayoutManager(this, span, orientation, reverseLayout);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setHasFixedSize(true);
+
+        PostAdapter adapter = new PostAdapter(this);
+        recyclerView.setAdapter(adapter);
     }
 }
 
