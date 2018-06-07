@@ -28,7 +28,10 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostAdapterVie
     private ArrayList<String> imgUrls;
 
     // TODO  123 ) Defining a constructor for ReviewAdapter
-    public PostAdapter(Context context) {this.mContext = context;}
+    public PostAdapter(Context context ,ArrayList<String> imglist ) {
+        this.mContext = context;
+        this.imgUrls = imglist;
+    }
 
     @NonNull
     @Override

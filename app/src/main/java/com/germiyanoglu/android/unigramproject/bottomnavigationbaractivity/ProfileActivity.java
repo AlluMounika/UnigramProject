@@ -166,7 +166,7 @@ public class ProfileActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
 
-        PostAdapter adapter = new PostAdapter(this);
+        PostAdapter adapter = new PostAdapter(this,imageUrl);
         recyclerView.setAdapter(adapter);
     }
 }
