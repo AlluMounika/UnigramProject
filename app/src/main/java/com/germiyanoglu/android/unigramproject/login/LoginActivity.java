@@ -1,5 +1,6 @@
 package com.germiyanoglu.android.unigramproject.login;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -12,6 +13,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.germiyanoglu.android.unigramproject.MainActivity;
 import com.germiyanoglu.android.unigramproject.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -147,8 +149,12 @@ public class LoginActivity extends AppCompatActivity{
                                         Log.d(TAG, "signInWithEmail:success");
                                         FirebaseUser user = mAuth.getCurrentUser();
 
+                                        Toast.makeText(LoginActivity.this, "Authentication success.",
+                                                Toast.LENGTH_SHORT).show();
+
                                         // TODO : 153 ) Hiding progessbar and textview
                                         setGone();
+
 
                                     } else {
                                         // If sign in fails, display a message to the user.
@@ -170,6 +176,13 @@ public class LoginActivity extends AppCompatActivity{
 
             }
         });
+
+
+        // TODO : 154 ) If user is logged in, navigating MainActivity
+        if(mAuth.getCurrentUser() != null){
+            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            startActivity(intent);
+        }
     }
 
 
