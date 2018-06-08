@@ -60,6 +60,9 @@ public class LoginActivity extends AppCompatActivity{
         Log.d(TAG,"onCreate is working");
         ButterKnife.bind(this);
 
+        // TODO : 156 ) Calling navigateRegisterPage
+        navigateRegisterPage();
+
         // TODO : 150 ) Calling setGone
         setGone();
 
@@ -188,15 +191,6 @@ public class LoginActivity extends AppCompatActivity{
             startActivity(intent);
         }
 
-        // TODO : 155 ) When user link create link which is named for "No account yet? Create a new one", navigating to RegisterActivity
-        registerlink.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d(TAG, "onClick: navigating to register screen");
-                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
-                startActivity(intent);
-            }
-        });
     }
 
 
@@ -210,6 +204,18 @@ public class LoginActivity extends AppCompatActivity{
     private void setGone(){
         loginProgressBar.setVisibility(View.GONE);
         pleaseWaitTextView.setVisibility(View.GONE);
+    }
+
+    // TODO : 155 ) When user link create link which is named for "No account yet? Create a new one", navigating to RegisterActivity
+    private void navigateRegisterPage(){
+         registerlink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "onClick: navigating to register screen");
+                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
 }
