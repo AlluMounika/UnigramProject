@@ -8,6 +8,8 @@ import android.util.Log;
 import com.germiyanoglu.android.unigramproject.R;
 import com.germiyanoglu.android.unigramproject.login.LoginActivity;
 
+import butterknife.ButterKnife;
+
 // TODO : 134 ) Creating Register Activity
 public class RegisterActivity extends AppCompatActivity {
 
@@ -18,5 +20,6 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         Log.d(TAG,"onCreate is working");
+        ButterKnife.bind(this);
     }
 }

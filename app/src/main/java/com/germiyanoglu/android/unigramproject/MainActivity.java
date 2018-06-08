@@ -1,6 +1,8 @@
 package com.germiyanoglu.android.unigramproject;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -12,6 +14,9 @@ import android.view.MenuItem;
 import com.germiyanoglu.android.unigramproject.bottomnavigationbar.BottomNavigationBarAnimation;
 import com.germiyanoglu.android.unigramproject.home.CameraFragment;
 import com.germiyanoglu.android.unigramproject.home.TopMenuBarFragmentPagerAdapter;
+import com.germiyanoglu.android.unigramproject.login.LoginActivity;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
 import butterknife.BindView;
@@ -32,6 +37,11 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.tabs)
     TabLayout tabLayout;
 
+    // TODO : 135 ) Adding Firebase Authentication and determining authentication statue as an AuthStateListener
+    private FirebaseAuth mAuth;
+    private FirebaseAuth.AuthStateListener mAuthStateListener;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +55,9 @@ public class MainActivity extends AppCompatActivity {
 
         // TODO 64 ) Calling TopBarMenu
         topBarMenu(viewPager);
+
+        // TODO : 137 ) Calling firebaseAuthSetting
+        firebaseAuthSetting();
 
     }
 
@@ -93,4 +106,57 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.getTabAt(MESSAGE_POSITON).setIcon(R.drawable.ic_arrow);
     }
 
+
+    // TODO : 136 ) Defining a method for determining whether authentication is sign-in or signout
+    private void firebaseAuthSetting(){
+        Log.d(TAG, "firebaseAuthSetting : firebase authentication is working.");
+
+        mAuth = FirebaseAuth.getInstance();
+
+        mAuthStateListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+
+                // TODO : 139 ) Calling checkCurrentUser
+                checkCurrentUser(user);
+
+                if (user != null) {
+                    // User is signed in
+                    Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
+                } else {
+                    // User is signed out
+                    Log.d(TAG, "onAuthStateChanged:signed_out");
+                }
+            }
+        };
+    }
+
+    // TODO : 137 ) Defining onStart and onStop methods for Firebase
+    @Override
+    public void onStart() {
+        Log.d(TAG, "onStart is working");
+        super.onStart();
+        mAuth.addAuthStateListener(mAuthStateListener);
+        checkCurrentUser(mAuth.getCurrentUser());
+    }
+
+    @Override
+    public void onStop() {
+        Log.d(TAG, "onStop is working");
+        super.onStop();
+        if (mAuthStateListener != null) {
+            mAuth.removeAuthStateListener(mAuthStateListener);
+        }
+    }
+
+    // TODO : 138 ) Checking whether the current user is or not, If it isn't, sending to LoginActivity
+    private void checkCurrentUser(FirebaseUser user){
+        Log.d(TAG, "checkCurrentUser: checking if user is logged in.");
+
+        if(user == null){
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+        }
+    }
 }
