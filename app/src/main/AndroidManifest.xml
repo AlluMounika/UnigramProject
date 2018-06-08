@@ -20,19 +20,19 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".bottomnavigationbaractivity.SearchActivity"/>
-        <activity android:name=".bottomnavigationbaractivity.AddActivity"/>
-        <activity android:name=".bottomnavigationbaractivity.LikesActivity"/>
-        <activity android:name=".bottomnavigationbaractivity.ProfileActivity"/>
+        <activity android:name=".search.SearchActivity"/>
+        <activity android:name=".add.AddActivity"/>
+        <activity android:name=".likes.LikesActivity"/>
+        <activity android:name=".profile.ProfileActivity"/>
 
         <activity
             android:name=".settings.SettingsActivity"
             android:label="SettingsActivity"
-            android:parentActivityName=".bottomnavigationbaractivity.ProfileActivity" >
+            android:parentActivityName=".profile.ProfileActivity" >
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".bottomnavigationbaractivity.ProfileActivity" />
+                android:value=".profile.ProfileActivity" />
         </activity>
 
 

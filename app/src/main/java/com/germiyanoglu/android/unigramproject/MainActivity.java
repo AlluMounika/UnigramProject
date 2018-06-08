@@ -56,14 +56,14 @@ public class MainActivity extends AppCompatActivity {
         // TODO 42 ) Providing navigation process between icons in BottomNavigationBar
         BottomNavigationBarAnimation.navitageIcon(this,bottomNavigationViewEx);
 
-        // TODO 43 ) When icon is clicked , icon must be active
+        // TODO 43 ) When login_icon is clicked , login_icon must be active
         Menu menu = bottomNavigationViewEx.getMenu();
         MenuItem menuItem = menu.getItem(ICON_NUMBER_MENU);
         menuItem.setChecked(true);
 
     }
 
-    // TODO 63 ) Defining TopBarMenu to create top bar icon activity in the menu vias TopMenuBarFragmentPagerAdapter
+    // TODO 63 ) Defining TopBarMenu to create top bar login_icon activity in the menu vias TopMenuBarFragmentPagerAdapter
     private void topBarMenu(ViewPager viewPager){
         TopMenuBarFragmentPagerAdapter topMenuBarFragmentPagerAdapter =
                 new TopMenuBarFragmentPagerAdapter(getSupportFragmentManager());
@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
         final int HOME_POSITON = 1;
         final int MESSAGE_POSITON = 2;
 
-        // TODO 66 ) Putting camera, home and message icon in tablayout
+        // TODO 66 ) Putting camera, home and message login_icon in tablayout
         tabLayout.getTabAt(CAMERA_POSITON).setIcon(R.drawable.ic_action_name);
         tabLayout.getTabAt(HOME_POSITON).setIcon(R.drawable.ic_home);
         tabLayout.getTabAt(MESSAGE_POSITON).setIcon(R.drawable.ic_arrow);

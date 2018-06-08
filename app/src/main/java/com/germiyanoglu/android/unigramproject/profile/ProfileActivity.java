@@ -1,4 +1,4 @@
-package com.germiyanoglu.android.unigramproject.bottomnavigationbaractivity;
+package com.germiyanoglu.android.unigramproject.profile;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,9 +11,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.GridLayout;
-import android.widget.GridView;
-import android.widget.ImageView;
-import android.widget.ListAdapter;
 import android.widget.ProgressBar;
 
 import com.germiyanoglu.android.unigramproject.R;
@@ -25,7 +22,6 @@ import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
 import java.util.ArrayList;
 
-import butterknife.BindDimen;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -81,7 +77,7 @@ public class ProfileActivity extends AppCompatActivity {
         // TODO 46 ) Providing navigation process between icons in BottomNavigationBar
         BottomNavigationBarAnimation.navitageIcon(ProfileActivity.this,bottomNavigationViewEx);
 
-        // TODO 47 ) When icon is clicked , icon must be active
+        // TODO 47 ) When login_icon is clicked , login_icon must be active
         Menu menu = bottomNavigationViewEx.getMenu();
         MenuItem menuItem = menu.getItem(ICON_NUMBER_MENU);
         menuItem.setChecked(true);
@@ -94,9 +90,9 @@ public class ProfileActivity extends AppCompatActivity {
         //  TODO 71 ) Setting Tool bar-->
         setSupportActionBar(toolbar);
 
-        //  TODO 71 ) Defining menu icon in Tool bar-->
+        //  TODO 71 ) Defining menu login_icon in Tool bar-->
         //  TODO 87 ) Deleting if part because of not using menu properties
-        //  TODO 88 ) Add more icon as an intent functionality via setOnClickListener
+        //  TODO 88 ) Add more login_icon as an intent functionality via setOnClickListener
         /*moreIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

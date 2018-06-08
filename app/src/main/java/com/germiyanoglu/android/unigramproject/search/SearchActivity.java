@@ -1,4 +1,4 @@
-package com.germiyanoglu.android.unigramproject.bottomnavigationbaractivity;
+package com.germiyanoglu.android.unigramproject.search;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -43,7 +43,7 @@ public class SearchActivity extends AppCompatActivity {
         // TODO 48 ) Providing navigation process between icons in BottomNavigationBar
         BottomNavigationBarAnimation.navitageIcon(SearchActivity.this,bottomNavigationViewEx);
 
-        // TODO 49 ) When icon is clicked , icon must be active
+        // TODO 49 ) When login_icon is clicked , login_icon must be active
         Menu menu = bottomNavigationViewEx.getMenu();
         MenuItem menuItem = menu.getItem(ICON_NUMBER_MENU);
         menuItem.setChecked(true);

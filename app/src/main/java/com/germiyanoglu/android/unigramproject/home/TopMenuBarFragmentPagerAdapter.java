@@ -8,12 +8,12 @@ import android.util.Log;
 import java.util.ArrayList;
 
 // TODO 60 ) Creating BottomNavigationBarFragmentPagerAdapter to store bar fragment
-// while keeping the fragement of selected bar icon in the memory.
+// while keeping the fragement of selected bar login_icon in the memory.
 public class TopMenuBarFragmentPagerAdapter extends FragmentPagerAdapter{
 
     private static final String TAG = TopMenuBarFragmentPagerAdapter.class.getName();
 
-    // TODO 61 ) Creating ArrayList for defining selected position of bar icon
+    // TODO 61 ) Creating ArrayList for defining selected position of bar login_icon
     ArrayList<Fragment> barIconArrayList = new ArrayList<>();
 
     public TopMenuBarFragmentPagerAdapter(FragmentManager fm) {
@@ -31,7 +31,7 @@ public class TopMenuBarFragmentPagerAdapter extends FragmentPagerAdapter{
     }
 
 
-    // TODO 62 ) Creating createFragement for adding top bar icon fragment (camera,home and message) in the arraylist
+    // TODO 62 ) Creating createFragement for adding top bar login_icon fragment (camera,home and message) in the arraylist
     public void createFragement(){
 
         Log.d(TAG,"createFragement is working");

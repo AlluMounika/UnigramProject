@@ -1,4 +1,4 @@
-package com.germiyanoglu.android.unigramproject.bottomnavigationbaractivity;
+package com.germiyanoglu.android.unigramproject.likes;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -13,14 +13,16 @@ import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-// TODO 27 ) Creating Add Activity
-public class AddActivity extends AppCompatActivity {
+// TODO 30 ) Creating Share Activity
+public class LikesActivity extends AppCompatActivity {
 
-    private static final String TAG = AddActivity.class.getName();
-    private static final int ICON_NUMBER_MENU = 2;
+    private static final String TAG = LikesActivity.class.getName();
+    private static final int ICON_NUMBER_MENU = 1;
 
     @BindView(R.id.bottomNavigationView)
     BottomNavigationViewEx bottomNavigationViewEx;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,24 +32,23 @@ public class AddActivity extends AppCompatActivity {
 
         Log.d(TAG,"onCreate is starting");
 
-        // TODO 29 ) Calling bottomNavigationViewMenu
+        // TODO 32 ) Calling bottomNavigationViewMenu
         bottomNavigationViewMenu();
 
     }
 
-    // TODO 28 ) Creating Bottom Navigation View Menu
+    // TODO 31 ) Creating Bottom Navigation View Menu
     private void bottomNavigationViewMenu(){
         Log.d(TAG,"bottomNavigationViewMenu is starting");
         BottomNavigationBarAnimation.setBottomNavigationBarAnimation(bottomNavigationViewEx);
 
-        // TODO 50 ) Providing navigation process between icons in BottomNavigationBar
-        BottomNavigationBarAnimation.navitageIcon(AddActivity.this,bottomNavigationViewEx);
+        // TODO 44 ) Providing navigation process between icons in BottomNavigationBar
+        BottomNavigationBarAnimation.navitageIcon(LikesActivity.this,bottomNavigationViewEx);
 
-        // TODO 51 ) When icon is clicked , icon must be active
+        // TODO 45 ) When login_icon is clicked , login_icon must be active
         Menu menu = bottomNavigationViewEx.getMenu();
         MenuItem menuItem = menu.getItem(ICON_NUMBER_MENU);
         menuItem.setChecked(true);
-
     }
 }
 

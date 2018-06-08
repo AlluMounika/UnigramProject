@@ -9,10 +9,10 @@ import android.view.MenuItem;
 
 import com.germiyanoglu.android.unigramproject.MainActivity;
 import com.germiyanoglu.android.unigramproject.R;
-import com.germiyanoglu.android.unigramproject.bottomnavigationbaractivity.LikesActivity;
-import com.germiyanoglu.android.unigramproject.bottomnavigationbaractivity.ProfileActivity;
-import com.germiyanoglu.android.unigramproject.bottomnavigationbaractivity.SearchActivity;
-import com.germiyanoglu.android.unigramproject.bottomnavigationbaractivity.AddActivity;
+import com.germiyanoglu.android.unigramproject.likes.LikesActivity;
+import com.germiyanoglu.android.unigramproject.profile.ProfileActivity;
+import com.germiyanoglu.android.unigramproject.search.SearchActivity;
+import com.germiyanoglu.android.unigramproject.add.AddActivity;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
 // TODO 21 ) Creating BottomNavigationBarAnimation to set false of animation

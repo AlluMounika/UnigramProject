@@ -127,7 +127,7 @@ public class SettingsActivity extends AppCompatActivity {
         // TODO 42 ) Providing navigation process between icons in BottomNavigationBar
         BottomNavigationBarAnimation.navitageIcon(this,bottomNavigationViewEx);
 
-        // TODO 43 ) When icon is clicked , icon must be active
+        // TODO 43 ) When login_icon is clicked , login_icon must be active
         Menu menu = bottomNavigationViewEx.getMenu();
         MenuItem menuItem = menu.getItem(ICON_NUMBER_MENU);
         menuItem.setChecked(true);
