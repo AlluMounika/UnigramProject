@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.germiyanoglu.android.unigramproject.MainActivity;
 import com.germiyanoglu.android.unigramproject.R;
+import com.germiyanoglu.android.unigramproject.register.RegisterActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -48,6 +49,9 @@ public class LoginActivity extends AppCompatActivity{
 
     @BindView(R.id.login_screen_please_Wait_textview)
     TextView pleaseWaitTextView;
+
+    @BindView(R.id.login_screen_signup_link)
+    TextView registerlink;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -178,11 +182,21 @@ public class LoginActivity extends AppCompatActivity{
         });
 
 
-        // TODO : 154 ) If user is logged in, navigating MainActivity
+        // TODO : 154 ) If user is logged in, navigating to MainActivity
         if(mAuth.getCurrentUser() != null){
             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
             startActivity(intent);
         }
+
+        // TODO : 155 ) When user link create link which is named for "No account yet? Create a new one", navigating to RegisterActivity
+        registerlink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "onClick: navigating to register screen");
+                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
 
