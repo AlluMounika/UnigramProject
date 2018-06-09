@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatButton;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -63,13 +64,13 @@ public class LoginActivity extends AppCompatActivity{
         // TODO : 156 ) Calling navigateRegisterPage
         navigateRegisterPage();
 
-        // TODO : 150 ) Calling setGone
+        // TODO : 149 ) Calling setGone
         setGone();
 
         // TODO : 144 ) Calling firebaseAuthSetting
         firebaseAuthSetting();
 
-        // TODO : 154 ) Calling loginProcess
+        // TODO : 153 ) Calling loginProcess
         loginProcess();
 
     }
@@ -115,36 +116,25 @@ public class LoginActivity extends AppCompatActivity{
         }
     }
 
-    // TODO : 145 ) Checking whether String is null or not
-    private boolean isStringNull(String string){
-        Log.d(TAG, "isStringNull: checking string if null.");
 
-        if(string.equals("")){
-            return true;
-        }
-        else{
-            return false;
-        }
-    }
-
-    // TODO : 146 ) Login Process
+    // TODO : 145 ) Login Process
     private void loginProcess(){
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "login button onClick is working");
 
-                // TODO : 147 ) Getting texts from email and password text
+                // TODO : 146 ) Getting texts from email and password text
                 String email = emailEditText.getText().toString();
                 String password = passwordEditText.getText().toString();
 
-                if(isStringNull(email) && isStringNull(password)){
+                if(TextUtils.isEmpty(email) && TextUtils.isEmpty(password)){
                     Toast.makeText(LoginActivity.this
                             , "You must fill out all of fields"
                             , Toast.LENGTH_SHORT).show();
                 }else{
 
-                    // TODO : 151 ) Showing progessbar and textview
+                    // TODO : 150 ) Showing progessbar and textview
                     setVisible();
 
                     mAuth.signInWithEmailAndPassword(email, password)
@@ -159,7 +149,7 @@ public class LoginActivity extends AppCompatActivity{
                                         Toast.makeText(LoginActivity.this, "Authentication success.",
                                                 Toast.LENGTH_SHORT).show();
 
-                                        // TODO : 153 ) Hiding progessbar and textview
+                                        // TODO : 152 ) Hiding progessbar and textview
                                         setGone();
 
 
@@ -169,7 +159,7 @@ public class LoginActivity extends AppCompatActivity{
                                         Toast.makeText(LoginActivity.this, "Authentication failed.",
                                                 Toast.LENGTH_SHORT).show();
 
-                                        // TODO : 152 ) Hiding progessbar and textview
+                                        // TODO : 151 ) Hiding progessbar and textview
                                         setGone();
 
 
@@ -185,7 +175,7 @@ public class LoginActivity extends AppCompatActivity{
         });
 
 
-        // TODO : 154 ) If user is logged in, navigating to MainActivity
+        // TODO : 155 ) If user is logged in, navigating to MainActivity
         if(mAuth.getCurrentUser() != null){
             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
             startActivity(intent);
@@ -194,19 +184,19 @@ public class LoginActivity extends AppCompatActivity{
     }
 
 
-    // TODO : 148 ) Set Visible of progessBar and TextView
+    // TODO : 147 ) Set Visible of progessBar and TextView
     private void setVisible(){
         loginProgressBar.setVisibility(View.VISIBLE);
         pleaseWaitTextView.setVisibility(View.VISIBLE);
     }
 
-    // TODO : 149 ) Set Gone of progessBar and TextView
+    // TODO : 148 ) Set Gone of progessBar and TextView
     private void setGone(){
         loginProgressBar.setVisibility(View.GONE);
         pleaseWaitTextView.setVisibility(View.GONE);
     }
 
-    // TODO : 155 ) When user link create link which is named for "No account yet? Create a new one", navigating to RegisterActivity
+    // TODO : 154 ) When user link create link which is named for "No account yet? Create a new one", navigating to RegisterActivity
     private void navigateRegisterPage(){
          registerlink.setOnClickListener(new View.OnClickListener() {
             @Override
