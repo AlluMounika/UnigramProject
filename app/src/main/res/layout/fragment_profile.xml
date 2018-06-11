@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--  TODO : 208 ) Designing fragment_profile.xml -->
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/fragment_profile_relativelayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!--  TODO 76 ) Adding top tool bar of profile -->
+        <include layout="@layout/top_profile_bar"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/fragment_profile_information_relativelayout"
+        android:layout_below="@+id/fragment_profile_relativelayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!--  TODO 209 ) Adding top profile bar in profile xml-->
+        <include layout="@layout/profile_information_section"/>
+
+    </RelativeLayout>
+
+    <!-- TODO 211 ) Adding ProgressBar  -->
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        />
+
+    <!--  TODO 210 ) Adding bottom navigation bar in profile xml-->
+    <include layout="@layout/layout_bottom_navigation_main"/>
+
+</RelativeLayout>

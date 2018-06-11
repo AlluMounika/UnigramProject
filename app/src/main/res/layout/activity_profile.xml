@@ -8,23 +8,19 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <!--  TODO 73 ) Adding top profile bar in profile xml-->
-        <include layout="@layout/profile_information_section"/>
-
-        <!--  TODO 74 ) Adding bottom navigation bar in profile xml-->
-        <include layout="@layout/layout_bottom_navigation_main"/>
+        <!--  TODO 73 ) Adding top profile bar in profile xml (Deleted)-->
+        <!--  TODO 74 ) Adding bottom navigation bar in profile xml (Deleted)-->
+        <!-- TODO 79 ) Adding ProgressBar  (Deleted)-->
 
 
-        <!-- TODO 79 ) Adding ProgressBar  -->
-        <ProgressBar
-            android:id="@+id/progressBar"
-            style="?android:attr/progressBarStyle"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="100dp"
-            />
+        <!-- TODO 213 ) 73,74,79th steps are deleted because of just using Fragment tag -->
 
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/profile_container">
+
+        </FrameLayout>
 
     </RelativeLayout>
 

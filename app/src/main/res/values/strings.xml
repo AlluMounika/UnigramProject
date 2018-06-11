@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">UnigramProject</string>
+    <string name="database_user_child_node">user</string>
+    <string name="database_user_account_child_node">user_account</string>
 </resources>

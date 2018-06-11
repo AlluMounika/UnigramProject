@@ -73,6 +73,7 @@ public class LoginActivity extends AppCompatActivity{
         // TODO : 153 ) Calling loginProcess
         loginProcess();
 
+
     }
 
 
@@ -146,17 +147,30 @@ public class LoginActivity extends AppCompatActivity{
                                         Log.d(TAG, "signInWithEmail:success");
                                         FirebaseUser user = mAuth.getCurrentUser();
 
-                                        Toast.makeText(LoginActivity.this, "Authentication success.",
-                                                Toast.LENGTH_SHORT).show();
+                                        //Toast.makeText(LoginActivity.this, "Authentication success.",
+                                        //        Toast.LENGTH_SHORT).show();
 
-                                        // TODO : 152 ) Hiding progessbar and textview
-                                        setGone();
+                                        // TODO : 194 ) Navigating to MainActivity after user mail is verified
+                                        if(user.isEmailVerified()){
+                                            Log.d(TAG, "user email is verified");
+                                            // TODO : 152 ) Hiding progessbar and textview
+                                            setGone();
 
+                                            Intent intent = new Intent(LoginActivity.this,MainActivity.class);
+                                            startActivity(intent);
+                                        }else{
+                                            setGone();
+                                            Toast.makeText(LoginActivity.this, "Please verify your email sending to you",
+                                                    Toast.LENGTH_SHORT).show();
+
+                                            // TODO : 195 ) Signout process
+                                            mAuth.signOut();
+                                        }
 
                                     } else {
                                         // If sign in fails, display a message to the user.
                                         Log.w(TAG, "signInWithEmail:failure", task.getException());
-                                        Toast.makeText(LoginActivity.this, "Authentication failed.",
+                                        Toast.makeText(LoginActivity.this, "User with this email already exist.",
                                                 Toast.LENGTH_SHORT).show();
 
                                         // TODO : 151 ) Hiding progessbar and textview

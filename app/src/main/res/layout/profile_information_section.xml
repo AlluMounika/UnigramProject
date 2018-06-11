@@ -11,20 +11,10 @@
         android:layout_height="match_parent">
 
 
-        <RelativeLayout
-            android:id="@+id/profile_information_section_profile_bar"
-            android:layout_width="match_parent"
-            android:layout_height="50dp">
-
-            <!--  TODO 76 ) Adding top tool bar of profile -->
-            <include layout="@layout/top_profile_bar"/>
-
-        </RelativeLayout>
 
         <!-- TODO 77 ) Adding top profile information (profile image, information section)  -->
         <RelativeLayout
             android:id="@+id/profile_information_section_profile_relativelayout"
-            android:layout_below="@+id/profile_information_section_profile_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 

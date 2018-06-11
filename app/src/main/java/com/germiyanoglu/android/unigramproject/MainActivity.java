@@ -59,6 +59,8 @@ public class MainActivity extends AppCompatActivity {
         // TODO : 137 ) Calling firebaseAuthSetting
         firebaseAuthSetting();
 
+
+
     }
 
     // TODO 20 ) Creating Bottom Navigation View Menu
