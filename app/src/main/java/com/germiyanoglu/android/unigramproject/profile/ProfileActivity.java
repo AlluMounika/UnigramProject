@@ -52,6 +52,7 @@ public class ProfileActivity extends AppCompatActivity {
         ProfileFragment profileFragment = new ProfileFragment();
         FragmentTransaction transaction = ProfileActivity.this.getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.profile_container, profileFragment);
+        transaction.addToBackStack("fragmentProcess");
         transaction.commit();
     }
 
