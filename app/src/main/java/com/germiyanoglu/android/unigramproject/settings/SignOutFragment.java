@@ -73,9 +73,12 @@ public class SignOutFragment extends Fragment {
 
                     case DialogInterface.BUTTON_NEGATIVE:
                         //No button clicked
+                        Intent intent = new Intent(getActivity(), SettingsActivity.class);
+                        startActivity(intent);
                         break;
                 }
             }
+
         };
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
@@ -144,5 +147,6 @@ public class SignOutFragment extends Fragment {
             mAuth.removeAuthStateListener(mAuthStateListener);
         }
     }
+
 
 }
