@@ -154,10 +154,10 @@ public class SettingsActivity extends AppCompatActivity {
         for (int i = 0; i < settingsItemsPagerAdapter.getItemFragmentArrayList().size(); i++)
         {
             Fragment object = settingsItemsPagerAdapter.getItemFragmentArrayList().get(i);
-            if (object.equals(new EditProfileFragment())){
+            if (object instanceof EditProfileFragment){
                 Log.d(TAG, "determineIndexOfSettingsItemPagerAdapter: EditProfileFragment");
                 return i;
-            }else if(object.equals(new SignOutFragment())){
+            }else if(object instanceof SignOutFragment){
                 Log.d(TAG, "determineIndexOfSettingsItemPagerAdapter: SignOutFragment");
                 return i;
             }
@@ -165,6 +165,7 @@ public class SettingsActivity extends AppCompatActivity {
         return -1;
 
     }
+
 
 
 }
