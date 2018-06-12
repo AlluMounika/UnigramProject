@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -38,6 +39,15 @@ public class SignOutFragment extends Fragment {
     @BindView(R.id.signout_textview)
     TextView signoutTextView;
 
+    @BindView(R.id.signout_title)
+    TextView signoutTitle;
+
+    @BindView(R.id.signout_title)
+    Button signOutYes;
+
+    @BindView(R.id.signout_get_back)
+    Button signOutNo;
+
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         Log.d(TAG,"onCreateView is working");
@@ -58,32 +68,26 @@ public class SignOutFragment extends Fragment {
 
     // TODO : 201 ) Opening dialogInterface for signing out according to button's feature
     private void signoutProcess() {
-        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+        // TODO : 202 ) Signout Process
+        signOutYes.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialog, int which) {
-                switch (which){
-                    case DialogInterface.BUTTON_POSITIVE:
-                        //Yes button clicked
-                        // TODO : 202 ) Signout Process
-                        setVisible();
-                        mAuth.signOut();
-                        getActivity().finish();
+            public void onClick(View v) {
+                Log.d(TAG, "onClick: attempting to sign out.");
+                setVisible();
 
-                        break;
-
-                    case DialogInterface.BUTTON_NEGATIVE:
-                        //No button clicked
-                        Intent intent = new Intent(getActivity(), SettingsActivity.class);
-                        startActivity(intent);
-                        break;
-                }
+                mAuth.signOut();
+                getActivity().finish();
             }
+        });
 
-        };
+        signOutNo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), SettingsActivity.class);
+                startActivity(intent);
+            }
+        });
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-        builder.setMessage("Are you sure you want to sign out?").setPositiveButton("Yes", dialogClickListener)
-                .setNegativeButton("No", dialogClickListener).show();
     }
 
     // TODO : 198 ) Set Visible of progessBar and TextView

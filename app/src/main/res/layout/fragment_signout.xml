@@ -6,6 +6,48 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:layout_centerInParent="true"
+        android:layout_centerHorizontal="true">
+
+        <TextView
+            android:id="@+id/signout_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textColor="@android:color/black"
+            android:text="Are you sure you want to sign out?"/>
+
+        <Button
+            android:id="@+id/signout_button"
+            android:layout_below="@+id/signout_title"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:text="Yes"
+            android:textSize="20sp"
+            android:background="@drawable/rectangle_border"
+            android:layout_marginTop="20dp"/>
+
+        <Button
+            android:id="@+id/signout_get_back"
+            android:layout_below="@+id/signout_title"
+            android:layout_toRightOf="@id/signout_button"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:text="No"
+            android:textSize="20sp"
+            android:background="@drawable/rectangle_border"
+            android:layout_marginTop="20dp"/>
+
+
+    </RelativeLayout>
+
+
     <ProgressBar
         android:id="@+id/signout_progressBar"
         android:layout_width="200dp"

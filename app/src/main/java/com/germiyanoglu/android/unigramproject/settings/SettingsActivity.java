@@ -118,7 +118,7 @@ public class SettingsActivity extends AppCompatActivity {
     // TODO 113 ) Designing ViewPager
     private void setViewPager(int fragmentNumber){
         relativeLayout.setVisibility(View.GONE);
-        Log.d(TAG,"navigating fragments : " + fragmentNumber);
+        Log.d(TAG,"navigating fragments Number of fragment : " + fragmentNumber);
         viewPager.setAdapter(settingsItemsPagerAdapter);
         viewPager.setCurrentItem(fragmentNumber);
     }
@@ -147,6 +147,7 @@ public class SettingsActivity extends AppCompatActivity {
             Log.d(TAG, "getIntentFromProfileActivity: receiving from Profile Activity");
             setViewPager(determineIndexOfSettingsItemPagerAdapter());
         }
+
     }
 
     // TODO : 238 ) Determining index of Settings Item Pager Adapter according its arraylist position
