@@ -42,7 +42,7 @@ public class SignOutFragment extends Fragment {
     @BindView(R.id.signout_title)
     TextView signoutTitle;
 
-    @BindView(R.id.signout_title)
+    @BindView(R.id.signout_button)
     Button signOutYes;
 
     @BindView(R.id.signout_get_back)
