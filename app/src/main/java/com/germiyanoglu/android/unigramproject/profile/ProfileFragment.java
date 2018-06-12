@@ -23,6 +23,7 @@ import com.germiyanoglu.android.unigramproject.modal.User;
 import com.germiyanoglu.android.unigramproject.modal.UserAccount;
 import com.germiyanoglu.android.unigramproject.modal.UserInformation;
 import com.germiyanoglu.android.unigramproject.settings.SettingsActivity;
+import com.germiyanoglu.android.unigramproject.utils.AsyncTaskLoadImage;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -89,6 +90,12 @@ public class ProfileFragment extends Fragment {
     @BindView(R.id.profile_top_bar_settings_icon)
     ImageView openSettings;
 
+    @BindView(R.id.profile_top_bar_textview)
+    TextView profileUsername;
+
+    @BindView(R.id.information_section_profile_edit_profile)
+    TextView editProfileTextView;
+
 
     // TODO 212 ) Inflating fragment_home.xml
     @Nullable
@@ -106,6 +113,9 @@ public class ProfileFragment extends Fragment {
 
         // TODO : 228 ) Calling firebaseAuthSetting
         firebaseAuthSetting();
+
+        // TODO : 236 ) Calling navigtateEditProfile
+        navigtateEditProfile();
 
         return view;
 
@@ -180,7 +190,8 @@ public class ProfileFragment extends Fragment {
             public void onDataChange(DataSnapshot dataSnapshot) {
 
                 // TODO : 222 ) Calling retrieveInformationFromFirebaseDatabase
-                retrieveInformationFromFirebaseDatabase(dataSnapshot);
+                // TODO : 234 ) Calling displayUserInformation within retrieveInformationFromFirebaseDatabase
+                displayUserInformation(retrieveInformationFromFirebaseDatabase(dataSnapshot));
             }
 
             @Override
@@ -344,6 +355,51 @@ public class ProfileFragment extends Fragment {
         return new UserInformation(user, userAccount);
     }
 
-    // TODO : 229 ) ---------------- K___A___L____D___I___M ----------------
+    // TODO : 229 ) Displaying user information from user and user account
+    private void displayUserInformation(UserInformation userInformation){
+        Log.d(TAG, "displayUserInformation is working ");
+
+        // TODO : 230 ) Getting user account information object from UserInformation object
+        UserAccount displayUserInformation = userInformation.getAccountInformation();
+
+        // TODO : 231 ) Getting information from UserAccount object
+        String profilePhoto = displayUserInformation.getProfile_photo();
+        String fullName = displayUserInformation.getUserfullname();
+        String userName = displayUserInformation.getUsername();
+        String description = displayUserInformation.getDescription();
+        String website = displayUserInformation.getWebsite();
+        int followers = displayUserInformation.getFollowers();
+        int following = displayUserInformation.getFollowing();
+        int posts = displayUserInformation.getPosts();
+
+        // TODO : 233 ) Hiding Progress Bar
+        progressBar.setVisibility(View.GONE);
+
+        // TODO : 232 ) Displaying information
+        new AsyncTaskLoadImage(profileImage).execute(profilePhoto);
+        profileName.setText(fullName);
+        profileUsername.setText(userName);
+        profileDescription.setText(description);
+        profileWebsite.setText(website);
+        profilePostNumber.setText(String.valueOf(posts));
+        profileFollowers.setText(String.valueOf(followers));
+        profileFollowings.setText(String.valueOf(following));
+
+    }
+
+    // TODO : 235 ) Navigating Edit Profile after pressing "Edit your Profile"
+    private void navigtateEditProfile(){
+        editProfileTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "navigtateEditProfile is working ");
+                Intent intent = new Intent(getActivity(), SettingsActivity.class);
+                intent.putExtra("edit_profile", "Profile Activity");
+                startActivity(intent);
+                //getActivity().overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+
+            }
+        });
+    }
 
 }

@@ -1,8 +1,10 @@
 package com.germiyanoglu.android.unigramproject.settings;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -72,6 +74,9 @@ public class SettingsActivity extends AppCompatActivity {
 
         // TODO 120 ) Calling bottomNavigationViewMenu
         bottomNavigationViewMenu();
+
+        // TODO : 239 ) Calling getIntentFromProfileActivity
+        getIntentFromProfileActivity();
     }
 
 
@@ -133,5 +138,33 @@ public class SettingsActivity extends AppCompatActivity {
         menuItem.setChecked(true);
 
     }
+
+    // TODO : 237 ) Getting intent with information from profile activity
+    private void getIntentFromProfileActivity(){
+        Intent intent = getIntent();
+
+        if(intent.hasExtra("edit_profile")){
+            Log.d(TAG, "getIntentFromProfileActivity: receiving from Profile Activity");
+            setViewPager(determineIndexOfSettingsItemPagerAdapter());
+        }
+    }
+
+    // TODO : 238 ) Determining index of Settings Item Pager Adapter according its arraylist position
+    private int determineIndexOfSettingsItemPagerAdapter(){
+        for (int i = 0; i < settingsItemsPagerAdapter.getItemFragmentArrayList().size(); i++)
+        {
+            Fragment object = settingsItemsPagerAdapter.getItemFragmentArrayList().get(i);
+            if (object.equals(new EditProfileFragment())){
+                Log.d(TAG, "determineIndexOfSettingsItemPagerAdapter: EditProfileFragment");
+                return i;
+            }else if(object.equals(new SignOutFragment())){
+                Log.d(TAG, "determineIndexOfSettingsItemPagerAdapter: SignOutFragment");
+                return i;
+            }
+        }
+        return -1;
+
+    }
+
 
 }

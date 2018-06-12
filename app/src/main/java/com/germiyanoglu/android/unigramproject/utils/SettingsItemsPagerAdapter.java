@@ -8,7 +8,6 @@ import com.germiyanoglu.android.unigramproject.settings.EditProfileFragment;
 import com.germiyanoglu.android.unigramproject.settings.SignOutFragment;
 
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 
 //   TODO 109 )  Creating SettingsItemsPagerAdapter to add functionality for each item
 public class SettingsItemsPagerAdapter extends FragmentPagerAdapter{
@@ -40,5 +39,10 @@ public class SettingsItemsPagerAdapter extends FragmentPagerAdapter{
         itemFragmentArrayList.add(signOutFragement);
 
     }
+
+    public ArrayList<Fragment> getItemFragmentArrayList() {
+        return itemFragmentArrayList;
+    }
+
 
 }
