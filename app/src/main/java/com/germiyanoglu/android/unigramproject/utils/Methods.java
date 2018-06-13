@@ -403,7 +403,7 @@ public class Methods {
 
                                             myRef.child(mContext.getString(R.string.database_user_child_node))
                                                     .child(userID)
-                                                    .child("email")
+                                                    .child("userEmail")
                                                     .setValue(email);
 
                                             Toast.makeText(mContext, "User email updated", Toast.LENGTH_SHORT).show();
