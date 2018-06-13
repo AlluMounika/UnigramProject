@@ -41,6 +41,7 @@ public class Methods {
     private long mPhotoUploadProgress = 0;
     private String append;
 
+
     public Methods(Context context) {
         mAuth = FirebaseAuth.getInstance();
         mFirebaseDatabase = FirebaseDatabase.getInstance();
@@ -256,7 +257,8 @@ public class Methods {
                             // TODO : 183 ) push() generate random key
                             append = myRef.push().getKey().substring(0,3);
                             Log.d(TAG, "onDataChange : username already exists. " +
-                                    "Appending random value(key 0 to 3)" + append + "to " + userName);
+                                    "Appending " + append + "to " + userName);
+
                         }
                     }
                 }
@@ -270,6 +272,7 @@ public class Methods {
                 // TODO : 192 ) Defining Register Process completed
                 Toast.makeText(mContext, "Registration successful. Verifying email.",
                         Toast.LENGTH_SHORT).show();
+
 
                 // TODO : 193 ) Signout process
                 mAuth.signOut();
