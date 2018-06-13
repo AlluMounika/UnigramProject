@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.germiyanoglu.android.unigramproject.R;
 import com.germiyanoglu.android.unigramproject.bottomnavigationbar.BottomNavigationBarAnimation;
@@ -20,13 +21,19 @@ import com.germiyanoglu.android.unigramproject.modal.User;
 import com.germiyanoglu.android.unigramproject.modal.UserAccount;
 import com.germiyanoglu.android.unigramproject.modal.UserInformation;
 import com.germiyanoglu.android.unigramproject.utils.AsyncTaskLoadImage;
+import com.germiyanoglu.android.unigramproject.utils.ConfirmReauthenticatePassword;
 import com.germiyanoglu.android.unigramproject.utils.Methods;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import butterknife.BindView;
@@ -34,7 +41,8 @@ import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 //   TODO 106 )  Edit Profile Fragment
-public class EditProfileFragment extends Fragment {
+public class EditProfileFragment extends Fragment
+    implements ConfirmReauthenticatePassword.OnPasswordConfirmationListener{
 
     private static final String TAG = EditProfileFragment.class.getName();
 
@@ -71,7 +79,13 @@ public class EditProfileFragment extends Fragment {
     @BindView(R.id.edit_profile_information_profile_information_phonenumber_edittext)
     EditText editProfilePhoneNumber;
 
+    @BindView(R.id.edit_profile_top_bar_settings_icon)
+    ImageView checkUpdate;
+
     private Methods firebaseMethods;
+    private UserAccount userAccount;
+    private User user;
+    private UserInformation userInformationEditProfile;
 
     //   TODO 107 )  Inflate fragment_edit_profile.xml
     @Override
@@ -91,18 +105,22 @@ public class EditProfileFragment extends Fragment {
             }
         });
 
+        // TODO : 255 ) Confirming update process
+        checkUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "onClick: attempting to update changes.");
+                saveEditProfileInformation();
+            }
+        });
+
         // TODO 111 ) Calling firebaseAuthSetting
         firebaseAuthSetting();
 
         return view;
     }
 
-    //   TODO 108 )  Setting image in CircleImageView
-    private void setCircleImageView(){
-        Log.d(TAG,"setCircleImageView is working");
-        String imgUrl = "http://cdn.journaldev.com/wp-content/uploads/2016/11/android-image-picker-project-structure.png";
-        new AsyncTaskLoadImage(circleImageView).execute(imgUrl);
-    }
+    //   TODO 108 )  Setting image in CircleImageView (DELETED)
 
     // TODO : 240 ) Defining a method for determining whether authentication is sign-in or signout
     private void firebaseAuthSetting() {
@@ -164,19 +182,20 @@ public class EditProfileFragment extends Fragment {
     // TODO : 246 ) Displaying user information from user and user account
     private void displayUserInformation(UserInformation userInformation){
         Log.d(TAG, "displayUserInformation is working ");
+        userInformationEditProfile = userInformation;
 
         // TODO : 247 ) Getting user account information object from UserInformation object
-        UserAccount displayUserInformation = userInformation.getAccountInformation();
+        userAccount = userInformation.getAccountInformation();
 
-        // TODO : 250 ) Getting user  object from UserInformation object
-        User user = userInformation.getUser();
+        // TODO : 251 ) Getting user  object from UserInformation object
+        user = userInformation.getUser();
 
         // TODO : 248 ) Getting information from UserAccount object
-        String profilePhoto = displayUserInformation.getProfile_photo();
-        String fullName = displayUserInformation.getUserfullname();
-        String userName = displayUserInformation.getUsername();
-        String description = displayUserInformation.getDescription();
-        String website = displayUserInformation.getWebsite();
+        String profilePhoto = userAccount.getProfile_photo();
+        String fullName = userAccount.getUserfullname();
+        String userName = userAccount.getUsername();
+        String description = userAccount.getDescription();
+        String website = userAccount.getWebsite();
         String email = user.getUserEmail();
         String phoneNumber = user.getUserPhoneNumber();
 
@@ -190,5 +209,121 @@ public class EditProfileFragment extends Fragment {
         editProfileEmail.setText(email);
         editProfilePhoneNumber.setText(phoneNumber);
 
+    }
+
+    // TODO : 252 ) Saving edit profile information
+    private void saveEditProfileInformation(){
+        Log.d(TAG, "saveEditProfileInformation is working ");
+
+        // TODO : 253 ) Getting all values from EditText
+        final String fullName = editProfileFullName.getText().toString();
+        final String userName = editProfileUsername.getText().toString();
+        final String description = editProfileDescription.getText().toString();
+        final String website = editProfileWebsite.getText().toString();
+        final String email = editProfileEmail.getText().toString();
+        final String phoneNumber = editProfilePhoneNumber.getText().toString();
+
+        final String userID = mAuth.getCurrentUser().getUid();
+
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Log.d(TAG, "onDataChange is working ");
+
+
+                // TODO : 254 ) Changing username
+                if(!userInformationEditProfile.getUser().getUsername().equals(userName)){
+                    Log.d(TAG, "changing username");
+                    checkUserName(userName);
+                }
+
+                // TODO : 260 ) Changing email
+                if(!userInformationEditProfile.getUser().getUserEmail().equals(email)){
+                    Log.d(TAG, "changing email");
+                    // TODO : 264 ) Showing dialong screen
+                    ConfirmReauthenticatePassword dialog = new ConfirmReauthenticatePassword();
+                    // TODO : 271 ) Setting target fragment with requestCode(not important) because when dialog is closed,
+                    // targetFragment which is named for EditProfileFragment opens
+                    dialog.setTargetFragment(EditProfileFragment.this, 0);
+                    dialog.show(getFragmentManager(), "ConfirmReauthenticatePassword");
+
+
+
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+    }
+
+    // TODO : 255 ) Checking whether username already exists or not after editing process
+    private void checkUserName(final String userName) {
+        Log.d(TAG, "checkUserName: Checking if  " + userName + " already exists.");
+
+        // TODO : 256 ) Creating firebase query to find username
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
+        Query query = reference.child(getString(R.string.database_user_child_node)).orderByChild("username").equalTo(userName);
+
+        // TODO : 257 ) Defining query listener
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    // dataSnapshot is the "user" node with all children with username
+                    // TODO : 258 ) Username already exists
+                    for (DataSnapshot issue : dataSnapshot.getChildren()) {
+                        // do something with the individual "user"
+                        if (issue.exists()){
+                            Log.d(TAG, "onDataChange: Username found : " + issue.getValue(User.class).getUsername());
+                            Toast.makeText(getActivity(), "That username already exists. Please change as a new one", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }else{ // TODO : 259 ) Adding new username
+                    firebaseMethods.updateUsername(userName);
+                    Toast.makeText(getActivity(), "Username changed.", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+
+    // TODO : 273 ) Defining override  passwordConfirmation method
+    @Override
+    public void passwordConfirmation(String password) {
+        Log.d(TAG, "passwordConfirmation is working . Password : " + password);
+
+        // TODO : 274 ) Updating Email Process
+        // Get auth credentials from the user for re-authentication. The example below shows
+        // email and password credentials but there are multiple possible providers,
+        // such as GoogleAuthProvider or FacebookAuthProvider.
+        AuthCredential credential = EmailAuthProvider
+                .getCredential(mAuth.getCurrentUser().getEmail(), password);
+
+        FirebaseUser user = mAuth.getCurrentUser();
+
+        // Prompt the user to re-provide their sign-in credentials
+        user.reauthenticate(credential)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        Log.d(TAG, "User re-authenticated.");
+                        if(task.isSuccessful()){
+                            firebaseMethods.updateUserEmail(editProfileEmail.getText().toString());
+                        } else {
+                            // Password is incorrect
+                            Log.d(TAG, "onComplete: re-authentication failed.");
+                        }
+                    }
+                });
     }
 }

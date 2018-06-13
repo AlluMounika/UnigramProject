@@ -24,6 +24,7 @@ import com.germiyanoglu.android.unigramproject.modal.UserAccount;
 import com.germiyanoglu.android.unigramproject.modal.UserInformation;
 import com.germiyanoglu.android.unigramproject.settings.SettingsActivity;
 import com.germiyanoglu.android.unigramproject.utils.AsyncTaskLoadImage;
+import com.germiyanoglu.android.unigramproject.utils.Methods;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -96,6 +97,7 @@ public class ProfileFragment extends Fragment {
     @BindView(R.id.information_section_profile_edit_profile)
     TextView editProfileTextView;
 
+    private Methods firebaseMethods;
 
     // TODO 212 ) Inflating fragment_home.xml
     @Nullable
@@ -104,6 +106,7 @@ public class ProfileFragment extends Fragment {
         Log.d(TAG, "onCreateView is working");
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
         ButterKnife.bind(this, view);
+        firebaseMethods = new Methods(getActivity());
 
         // TODO 35 ) Calling bottomNavigationViewMenu
         bottomNavigationViewMenu();
@@ -191,7 +194,8 @@ public class ProfileFragment extends Fragment {
 
                 // TODO : 222 ) Calling retrieveInformationFromFirebaseDatabase
                 // TODO : 234 ) Calling displayUserInformation within retrieveInformationFromFirebaseDatabase
-                displayUserInformation(retrieveInformationFromFirebaseDatabase(dataSnapshot));
+
+                displayUserInformation(firebaseMethods.retrieveInformationFromFirebaseDatabase(dataSnapshot));
             }
 
             @Override
@@ -217,142 +221,6 @@ public class ProfileFragment extends Fragment {
         if (mAuthStateListener != null) {
             mAuth.removeAuthStateListener(mAuthStateListener);
         }
-    }
-
-    // TODO : 223 ) Retriving user information from fireabase database via getting methods from each child
-    private UserInformation retrieveInformationFromFirebaseDatabase(DataSnapshot dataSnapshot) {
-        Log.d(TAG, "retrieveInformationFromFirebaseDatabase: retrieving user acoount information from firebase.");
-
-        // TODO : 224 ) Creating user and userAccount information
-        UserAccount userAccount = new UserAccount();
-        User user = new User();
-
-        // TODO : 225 ) Getting UserID
-        String userID = mAuth.getCurrentUser().getUid();
-
-        // TODO : 226 ) Getting all information of user
-        for (DataSnapshot ds : dataSnapshot.getChildren()) {
-
-
-            // user_account node
-            if (ds.getKey().equals(getActivity().getString(R.string.database_user_account_child_node))) {
-                Log.d(TAG, "retrieveInformationFromFirebaseDatabase: user_account: " + ds);
-
-                try {
-
-                    // userId
-                    userAccount.setUserId(
-                            ds.child(userID)
-                                    .getValue(UserAccount.class)
-                                    .getUserId()
-                    );
-
-                    // description
-                    userAccount.setDescription(
-                            ds.child(userID)
-                                    .getValue(UserAccount.class)
-                                    .getDescription()
-                    );
-
-                    // followers
-                    userAccount.setFollowers(
-                            ds.child(userID)
-                                    .getValue(UserAccount.class)
-                                    .getFollowers()
-                    );
-
-                    // following
-                    userAccount.setFollowing(
-                            ds.child(userID)
-                                    .getValue(UserAccount.class)
-                                    .getFollowing()
-                    );
-
-                    // posts
-                    userAccount.setPosts(
-                            ds.child(userID)
-                                    .getValue(UserAccount.class)
-                                    .getPosts()
-                    );
-
-                    //profile_photo
-                    userAccount.setProfile_photo(
-                            ds.child(userID)
-                                    .getValue(UserAccount.class)
-                                    .getProfile_photo()
-                    );
-
-                    // userfullname
-                    userAccount.setUserfullname(
-                            ds.child(userID)
-                                    .getValue(UserAccount.class)
-                                    .getUserfullname()
-                    );
-
-                    // username
-                    userAccount.setUsername(
-                            ds.child(userID)
-                                    .getValue(UserAccount.class)
-                                    .getUsername()
-                    );
-
-                    // website
-                    userAccount.setWebsite(
-                            ds.child(userID)
-                                    .getValue(UserAccount.class)
-                                    .getWebsite()
-                    );
-
-                    Log.d(TAG, "retrieveInformationFromFirebaseDatabase: user_account information: " + userAccount.toString());
-                } catch (NullPointerException e) {
-                    Log.e(TAG, "retrieveInformationFromFirebaseDatabase: NullPointerException: " + e.getMessage());
-                }
-            }
-
-            // user t node
-            if (ds.getKey().equals(getActivity().getString(R.string.database_user_child_node))) {
-                Log.d(TAG, "retrieveInformationFromFirebaseDatabase: user: " + ds);
-
-                try {
-
-                    // userId
-                    user.setUserId(
-                            ds.child(userID)
-                                    .getValue(User.class)
-                                    .getUserId()
-                    );
-
-                    // username
-                    user.setUsername(
-                            ds.child(userID)
-                                    .getValue(User.class)
-                                    .getUsername()
-                    );
-
-                    // userEmail
-                    user.setUserEmail(
-                            ds.child(userID)
-                                    .getValue(User.class)
-                                    .getUserEmail()
-                    );
-
-                    // userPhoneNumber
-                    user.setUserPhoneNumber(
-                            ds.child(userID)
-                                    .getValue(User.class)
-                                    .getUserPhoneNumber()
-                    );
-
-                    Log.d(TAG, "getUserAccountSettings: retrieved user information: " + user.toString());
-                } catch (NullPointerException e) {
-                    Log.e(TAG, "getUserAccountSettings: NullPointerException: " + e.getMessage());
-                }
-            }
-
-        }
-
-        // TODO : 227 ) Returning UserInformation object with user and user account information
-        return new UserInformation(user, userAccount);
     }
 
     // TODO : 229 ) Displaying user information from user and user account
