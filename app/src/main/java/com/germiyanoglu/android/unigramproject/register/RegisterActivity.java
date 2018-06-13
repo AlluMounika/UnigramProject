@@ -77,6 +77,7 @@ public class RegisterActivity extends AppCompatActivity {
         Log.d(TAG,"onCreate is working");
         ButterKnife.bind(this);
         mContext = RegisterActivity.this;
+        fireabaseMethods = new Methods(mContext);
 
         // TODO : 162 ) Set Gone to view of registerProgressBar and loadingtextView
         setGone();
