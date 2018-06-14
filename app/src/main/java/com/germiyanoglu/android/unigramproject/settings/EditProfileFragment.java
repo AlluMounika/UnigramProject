@@ -249,9 +249,29 @@ public class EditProfileFragment extends Fragment
                     dialog.setTargetFragment(EditProfileFragment.this, 0);
                     dialog.show(getFragmentManager(), "ConfirmReauthenticatePassword");
 
-
-
                 }
+
+                // TODO : 278 ) Changing userfullName
+                if(!userInformationEditProfile.getAccountInformation().getUserfullname().equals(fullName)){
+                    firebaseMethods.updateUserFullNameInformation(fullName);
+                }
+
+                // TODO : 279 ) Changing website
+                if(!userInformationEditProfile.getAccountInformation().getWebsite().equals(website)){
+                    firebaseMethods.updateUserWebsite(website);
+                }
+
+                // TODO : 280 ) Changing description
+                if(!userInformationEditProfile.getAccountInformation().getDescription().equals(description)){
+                    firebaseMethods.updateUserDescription(description);
+                }
+
+                // TODO : 281 ) Changing phone number
+                if(!userInformationEditProfile.getUser().getUserPhoneNumber().equals(phoneNumber)){
+                    firebaseMethods.updateUserPhoneNumber(phoneNumber);
+                }
+
+
 
             }
 

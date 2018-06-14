@@ -415,11 +415,63 @@ public class Methods {
                 }
 
 
-                // TODO : 278 )  --------------  K --- A --- L --- D --- I --- M ------------------
+
 
 
             }
 
         });
     }
+
+    // TODO : 282 ) Updating userFullName
+    public void updateUserFullNameInformation(String fullName) {
+        Log.d(TAG, "updateUserFullNameInformation is working");
+
+        if(fullName != null){
+            myRef.child(mContext.getString(R.string.database_user_account_child_node))
+                    .child(userID)
+                    .child("userfullname")
+                    .setValue(fullName);
+        }
+
+    }
+
+    // TODO : 283 ) Updating user website
+    public void updateUserWebsite(String website) {
+        Log.d(TAG, "updateUserAccountSettings is working");
+
+        if(website != null){
+            myRef.child(mContext.getString(R.string.database_user_account_child_node))
+                    .child(userID)
+                    .child("website")
+                    .setValue(website);
+        }
+    }
+
+    // TODO : 284 ) Updating user description
+    public void updateUserDescription(String description) {
+        Log.d(TAG, "updateUserAccountSettings is working");
+
+        if(description != null){
+            myRef.child(mContext.getString(R.string.database_user_account_child_node))
+                    .child(userID)
+                    .child("description")
+                    .setValue(description);
+        }
+    }
+
+    // TODO : 285 ) Updating user phoneNumber
+    public void updateUserPhoneNumber(String phoneNumber) {
+        Log.d(TAG, "updateUserAccountSettings is working");
+
+        if(phoneNumber != null){
+            myRef.child(mContext.getString(R.string.database_user_child_node))
+                    .child(userID)
+                    .child("userPhoneNumber")
+                    .setValue(phoneNumber);
+        }
+    }
+
+    // TODO : 286 ) ---------------------- K___A___L___D___I___M -----------------------------
+
 }
