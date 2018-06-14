@@ -12,7 +12,7 @@ import com.germiyanoglu.android.unigramproject.R;
 import com.germiyanoglu.android.unigramproject.likes.LikesActivity;
 import com.germiyanoglu.android.unigramproject.profile.ProfileActivity;
 import com.germiyanoglu.android.unigramproject.search.SearchActivity;
-import com.germiyanoglu.android.unigramproject.add.AddActivity;
+import com.germiyanoglu.android.unigramproject.share.ShareActivity;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
 // TODO 21 ) Creating BottomNavigationBarAnimation to set false of animation
@@ -82,7 +82,7 @@ public class BottomNavigationBarAnimation {
     // TODO 39 ) Opening openShareActivity
     private static void openAddActivity(final Context context){
         Log.d(TAG,"openShareActivity is working");
-        Intent intent = new Intent(context, AddActivity.class);
+        Intent intent = new Intent(context, ShareActivity.class);
         context.startActivity(intent);
     }
 
