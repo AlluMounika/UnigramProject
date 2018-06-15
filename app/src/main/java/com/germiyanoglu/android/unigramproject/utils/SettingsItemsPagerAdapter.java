@@ -16,6 +16,7 @@ public class SettingsItemsPagerAdapter extends FragmentPagerAdapter{
 
     private final ArrayList<Fragment> itemFragmentArrayList = new ArrayList<>();
 
+
     public SettingsItemsPagerAdapter(FragmentManager fm) {
         super(fm);
     }

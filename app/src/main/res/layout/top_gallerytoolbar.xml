@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- TODO : 303 ) Adding Top Gallerytoolbar to Gallery Fragment-->
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@android:color/white"
+        >
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/gallery_gallerytoolbar_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <RelativeLayout
+                android:id="@+id/gallery_gallerytoolbar_relativelayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/gallery_gallerytoolbar_close_imageview"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_cross"
+                    android:layout_marginRight="20dp" />
+
+                <Spinner
+                    android:id="@+id/gallery_gallerytoolbar_spinner"
+                    android:layout_toRightOf="@+id/gallery_gallerytoolbar_close_imageview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:textColor="@android:color/black"
+                    android:text="Gallery"
+                    android:layout_centerVertical="true"
+                    android:gravity="center_vertical">
+
+
+                </Spinner>
+
+                <TextView
+                    android:id="@+id/gallery_gallerytoolbar_next"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Next"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="15dp"
+                    android:textSize="20sp"
+                    android:textColor="@android:color/holo_red_light"
+                    android:layout_centerVertical="true"
+                    />
+
+            </RelativeLayout>
+
+
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+</merge>
