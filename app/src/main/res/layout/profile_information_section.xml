@@ -73,7 +73,7 @@
                android:id="@+id/profile_information_section_profile_name"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
-               android:text="Noyan"
+               android:text="Username"
                android:textSize="15sp"
                android:textStyle="bold"
                android:textColor="@android:color/black"/>
@@ -90,7 +90,7 @@
                 android:id="@+id/profile_information_section_website"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Noyan"
+                android:text="Webiste"
                 android:textSize="15sp"
                 android:textColor="@android:color/holo_green_light"/>
 

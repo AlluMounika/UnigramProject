@@ -25,7 +25,7 @@
                     android:id="@+id/profile_top_bar_textview"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Sercan Noyan Germiyanoğlu"
+                    android:text="UsernameFull"
                     android:layout_centerVertical="true"
                     android:textSize="15sp"
                     android:textColor="@android:color/black"

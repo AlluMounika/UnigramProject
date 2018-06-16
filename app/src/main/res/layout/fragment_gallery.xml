@@ -32,13 +32,13 @@
 
 
             <ImageView
-                android:id="@+id/galleryImageView"
+                android:id="@+id/gallery_fragment_galleryImageView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"/>
 
             <ProgressBar
-                android:id="@+id/progressBar"
+                android:id="@+id/gallery_fragment_progressBar"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 style="?android:attr/progressBarStyle"

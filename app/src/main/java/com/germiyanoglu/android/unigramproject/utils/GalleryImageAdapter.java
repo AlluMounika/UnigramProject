@@ -1,6 +1,5 @@
 package com.germiyanoglu.android.unigramproject.utils;
 
-
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -16,35 +15,42 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-// TODO 120 ) Designing GridViewPostAdapter to display posts in GridView
-public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostAdapterViewHolder>{
+// TODO : 330 ) Defining GalleryImageAdapter to show images inside its directory
+public class GalleryImageAdapter extends RecyclerView.Adapter<GalleryImageAdapter.GalleryImageAdapterViewHolder>
+    {
 
     private static final String TAG = PostAdapter.class.getName();
 
-    // TODO  121) Defining Context
+    // TODO  331 ) Defining Context
     private Context mContext;
 
-    // TODO  122 ) Defining Arraylist for image urls
-    private ArrayList<String> photoList;
+    // TODO  332 ) Defining Arraylist for image urls
+    private ArrayList<String> galleryImageList;
 
-    //TODO : 301 ) Defining mOnClickHandler
-    private final PostAdapterOnClickHandler mOnClickHandler;
+    // TODO  337 ) Defining append
+    private String mAppend;
 
-    // TODO  123 ) Defining a constructor for ReviewAdapter
-    public PostAdapter(Context context,PostAdapterOnClickHandler clickHandler,ArrayList<String> imglist ) {
+    private GalleryImageAdapterOnClickHandler mOnClickHandler;
+
+    // TODO  338 ) Defining OnClickListener
+    public interface GalleryImageAdapterOnClickHandler{
+        void onClick(View view);
+    }
+
+    // TODO  333 ) Defining a constructor for ReviewAdapter
+    public GalleryImageAdapter(Context context,ArrayList<String> imglist,String append) {
         this.mContext = context;
-        this.photoList = imglist;
-        this.mOnClickHandler = clickHandler;
+        if(context instanceof GalleryImageAdapter.GalleryImageAdapterOnClickHandler){
+            mOnClickHandler = (GalleryImageAdapterOnClickHandler) context;
+        }
+        this.galleryImageList = imglist;
+        this.mAppend = append;
     }
 
-    //TODO : 300 ) Defining onItemClickListener for Post(REQUIRED LATER)
-    public interface PostAdapterOnClickHandler{
-        //void onClick(View v);  --> PHOTO
-    }
 
     @NonNull
     @Override
-    public PostAdapter.PostAdapterViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
+    public GalleryImageAdapter.GalleryImageAdapterViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
         Context context = viewGroup.getContext();
         int layoutIdForListItem = R.layout.layout_postgridview;
         LayoutInflater inflater = LayoutInflater.from(context);
@@ -52,12 +58,13 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostAdapterVie
 
         View view = inflater.inflate(layoutIdForListItem, viewGroup, shouldAttachToParentImmediately);
 
-        return new PostAdapterViewHolder(view);
+        return new GalleryImageAdapterViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final PostAdapter.PostAdapterViewHolder holder, int position) {
-        String imageUrl = photoList.get(position);
+    public void onBindViewHolder(@NonNull final GalleryImageAdapter.GalleryImageAdapterViewHolder holder, int position) {
+        String imageUrl = galleryImageList.get(position);
+        imageUrl += mAppend;
         System.out.println(TAG + " imageUrl is " + imageUrl);
         if(imageUrl==null){
             holder.progressBar.setVisibility(View.GONE);
@@ -78,48 +85,45 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostAdapterVie
                         }
                     });
         }
-
     }
 
     @Override
     public int getItemCount() {
-        if (photoList != null) {
-            return photoList.size();
+        if (galleryImageList != null) {
+            return galleryImageList.size();
         } else {
             return 0;
         }
     }
 
 
-    public class PostAdapterViewHolder  extends RecyclerView.ViewHolder
-            implements View.OnClickListener{
+    public class GalleryImageAdapterViewHolder extends RecyclerView.ViewHolder
+        implements GalleryImageAdapterOnClickHandler{
 
-        // TODO  125 ) Defining progressBar and ImageView
+        // TODO  334 ) Defining progressBar and ImageView
         private ProgressBar progressBar;
         private ImageView postImage;
 
-        public PostAdapterViewHolder(View itemView) {
+        public GalleryImageAdapterViewHolder(View itemView) {
             super(itemView);
             progressBar = itemView.findViewById(R.id.gridview_progessBar);
             postImage = itemView.findViewById(R.id.gridview_post);
         }
 
-        // TODO  126 ) Getting returns for each item
+        // TODO  335 ) Getting returns for each item
         public ProgressBar getProgressBar(){ return progressBar; }
         public ImageView getPostImage(){ return postImage; }
 
-
         @Override
-        public void onClick(View v) {
-            /*int adapterPosition = getAdapterPosition();
-            Photo currentPhoto = photoList.get(adapterPosition);
-            mOnClickHandler.onClick(currentPhoto);*/
+        public void onClick(View view) {
+            int adapterPosition = getAdapterPosition();
+            String currentImage = galleryImageList.get(adapterPosition);
         }
     }
 
-    // TODO  124 ) Setting reviewData to listOfPhoto and save it
+    // TODO  336 ) Setting reviewData to mTrailerList and save it
     public void setPostData(ArrayList<String> listOfPhoto) {
-        photoList = listOfPhoto;
+        galleryImageList = listOfPhoto;
         notifyDataSetChanged();
     }
 }
