@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,6 +24,8 @@ import com.germiyanoglu.android.unigramproject.R;
 import com.germiyanoglu.android.unigramproject.utils.FilePath;
 import com.germiyanoglu.android.unigramproject.utils.GalleryImageAdapter;
 import com.germiyanoglu.android.unigramproject.utils.GetFilePath;
+import com.squareup.picasso.Callback;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -39,10 +42,10 @@ public class GalleryFragment extends Fragment {
     ImageView galleryImageView;
 
     @BindView(R.id.gallery_fragment_progressBar)
-    private ProgressBar mProgressBar;
+    ProgressBar mProgressBar;
 
     @BindView(R.id.gallery_gallerytoolbar_spinner)
-    private Spinner directorySpinner;
+    Spinner directorySpinner;
 
     @BindView(R.id.gallery_gallerytoolbar_close_imageview)
     ImageView closeGallery;
@@ -56,6 +59,7 @@ public class GalleryFragment extends Fragment {
     // TODO : 314 ) Defining location as a directory for spinner
     private ArrayList<String> directories;
     private String mAppend = "file:/";
+    private String mSelectedImage;
 
 
 
@@ -174,5 +178,37 @@ public class GalleryFragment extends Fragment {
         recyclerView.setAdapter(galleryImageAdapter);
 
 
+        try{
+            // TODO  337 ) Defining first element of array as a default to display it
+            mSelectedImage = galleryImageAdapter.firstImageofRecyleView();
+            setImage(mSelectedImage, galleryImageView, mAppend);
+        }catch (ArrayIndexOutOfBoundsException e){
+            Log.e(TAG, "setupGridView: ArrayIndexOutOfBoundsException: " +e.getMessage() );
+        }
+    }
+
+    // TODO  338 ) Dispalying default value in the image view
+    private void setImage(String mSelectedImage, ImageView galleryImageView, String mAppend) {
+        Log.d(TAG, "setImage: setting image in the imageview");
+        String imageUrl = mAppend + mSelectedImage;
+
+        if(TextUtils.isEmpty(imageUrl)){
+            setGoneProgressBar();
+        }else{
+            setVisibleProgressBar();
+
+            Picasso.with(getActivity())
+                    .load(imageUrl)
+                    .into(galleryImageView, new Callback() {
+                        @Override
+                        public void onSuccess() {
+                            setGoneProgressBar();
+                        }
+                        @Override
+                        public void onError() {
+
+                        }
+                    });
+        }
     }
 }

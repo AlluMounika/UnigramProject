@@ -3,6 +3,7 @@ package com.germiyanoglu.android.unigramproject.utils;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,7 +31,6 @@ public class GalleryImageAdapter extends RecyclerView.Adapter<GalleryImageAdapte
     // TODO  337 ) Defining append
     private String mAppend;
 
-    private GalleryImageAdapterOnClickHandler mOnClickHandler;
 
     // TODO  338 ) Defining OnClickListener
     public interface GalleryImageAdapterOnClickHandler{
@@ -40,9 +40,6 @@ public class GalleryImageAdapter extends RecyclerView.Adapter<GalleryImageAdapte
     // TODO  333 ) Defining a constructor for ReviewAdapter
     public GalleryImageAdapter(Context context,ArrayList<String> imglist,String append) {
         this.mContext = context;
-        if(context instanceof GalleryImageAdapter.GalleryImageAdapterOnClickHandler){
-            mOnClickHandler = (GalleryImageAdapterOnClickHandler) context;
-        }
         this.galleryImageList = imglist;
         this.mAppend = append;
     }
@@ -65,12 +62,12 @@ public class GalleryImageAdapter extends RecyclerView.Adapter<GalleryImageAdapte
     public void onBindViewHolder(@NonNull final GalleryImageAdapter.GalleryImageAdapterViewHolder holder, int position) {
         String imageUrl = galleryImageList.get(position);
         imageUrl += mAppend;
-        System.out.println(TAG + " imageUrl is " + imageUrl);
+        Log.d(TAG, " imageUrl is " + imageUrl);
         if(imageUrl==null){
             holder.progressBar.setVisibility(View.GONE);
         }else{
             holder.progressBar.setVisibility(View.VISIBLE);
-            Picasso.with(mContext).load(imageUrl).into(holder.postImage);
+            //Picasso.with(mContext).load(imageUrl).into(holder.postImage);
 
             Picasso.with(mContext)
                     .load(imageUrl)
@@ -118,6 +115,7 @@ public class GalleryImageAdapter extends RecyclerView.Adapter<GalleryImageAdapte
         public void onClick(View view) {
             int adapterPosition = getAdapterPosition();
             String currentImage = galleryImageList.get(adapterPosition);
+            Log.d(TAG, " selected image : " + currentImage);
         }
     }
 
@@ -125,5 +123,10 @@ public class GalleryImageAdapter extends RecyclerView.Adapter<GalleryImageAdapte
     public void setPostData(ArrayList<String> listOfPhoto) {
         galleryImageList = listOfPhoto;
         notifyDataSetChanged();
+    }
+
+    // TODO  339 ) Returning first value of galleryImageList
+    public String firstImageofRecyleView(){
+        return galleryImageList.get(0);
     }
 }

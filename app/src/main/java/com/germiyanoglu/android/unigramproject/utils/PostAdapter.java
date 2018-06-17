@@ -39,7 +39,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostAdapterVie
 
     //TODO : 300 ) Defining onItemClickListener for Post(REQUIRED LATER)
     public interface PostAdapterOnClickHandler{
-        //void onClick(View v);  --> PHOTO
+        void onClick(View v);
     }
 
     @NonNull
@@ -63,7 +63,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostAdapterVie
             holder.progressBar.setVisibility(View.GONE);
         }else{
             holder.progressBar.setVisibility(View.VISIBLE);
-            Picasso.with(mContext).load(imageUrl).into(holder.postImage);
+            //Picasso.with(mContext).load(imageUrl).into(holder.postImage);
 
             Picasso.with(mContext)
                     .load(imageUrl)
@@ -112,7 +112,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostAdapterVie
         @Override
         public void onClick(View v) {
             /*int adapterPosition = getAdapterPosition();
-            Photo currentPhoto = photoList.get(adapterPosition);
+            String currentPhoto = photoList.get(adapterPosition);
             mOnClickHandler.onClick(currentPhoto);*/
         }
     }
