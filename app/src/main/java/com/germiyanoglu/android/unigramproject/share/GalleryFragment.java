@@ -176,6 +176,7 @@ public class GalleryFragment extends Fragment {
 
         GalleryImageAdapter galleryImageAdapter = new GalleryImageAdapter(getActivity(),imgURLs,mAppend);
         recyclerView.setAdapter(galleryImageAdapter);
+        Log.d(TAG, "galleryImageAdapter size: " + galleryImageAdapter.getItemCount());
 
 
         try{
