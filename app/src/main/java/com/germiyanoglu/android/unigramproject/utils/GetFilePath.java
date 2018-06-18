@@ -15,11 +15,11 @@ public class GetFilePath {
 
     // TODO : 322 ) Returning directories inside directory
     public static ArrayList<String> getDirectoryPaths(String directory){
-        Log.d(TAG, " getDirectoryPaths is working");
+        Log.d(TAG, " getDirectoryPaths is working with " + directory);
         pathArray = new ArrayList<>();
         File file = new File(directory);
         File[] listOfFiles = file.listFiles();
-
+        Log.d(TAG, " getDirectoryPaths : the size of listOfFiles  " + listOfFiles.length);
         if(listOfFiles != null) {
             for (File selectedFile : listOfFiles) {
                 if (selectedFile.isDirectory()) {
@@ -34,12 +34,12 @@ public class GetFilePath {
 
     // TODO : 323 ) Returning file paths inside directory
     public static ArrayList<String> getFilePaths(String directory){
-        Log.d(TAG, " getFilePaths is working");
+        Log.d(TAG, " getFilePaths is working with" + directory);
         pathArray = new ArrayList<>();
         File file = new File(directory);
         File[] listOfFiles = file.listFiles();
-
-        if(listOfFiles != null) {
+        Log.d(TAG, " getFilePaths : the size of listOfFiles  " + listOfFiles.length);
+        if(listOfFiles != null){
             for (File selectedFile : listOfFiles) {
                 if (selectedFile.isDirectory()) {
                     pathArray.add(selectedFile.getAbsolutePath());
