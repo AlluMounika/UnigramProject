@@ -125,6 +125,7 @@ public class GalleryFragment extends Fragment {
         // camera directory
         directories.add(filePaths.CAMERA);
 
+
         // TODO : 323 ) Listing directories in spinner
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
                 android.R.layout.simple_spinner_item, directories);
@@ -166,6 +167,8 @@ public class GalleryFragment extends Fragment {
     private void listImages(String selectedDirectory){
         Log.d(TAG, "setupGridView: selected directory: " + selectedDirectory);
         final ArrayList<String> imgURLs = GetFilePath.getFilePaths(selectedDirectory);
+
+        Log.d(TAG, "Directory imgURLs: " + imgURLs.toString());
 
         int orientation = GridLayout.VERTICAL;
         int span = getResources().getInteger(R.integer.gridlayout_span);

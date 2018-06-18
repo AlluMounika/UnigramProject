@@ -17,8 +17,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 // TODO : 330 ) Defining GalleryImageAdapter to show images inside its directory
-public class GalleryImageAdapter extends RecyclerView.Adapter<GalleryImageAdapter.GalleryImageAdapterViewHolder>
-    {
+public class GalleryImageAdapter extends RecyclerView.Adapter<GalleryImageAdapter.GalleryImageAdapterViewHolder> {
 
     private static final String TAG = PostAdapter.class.getName();
 
@@ -39,6 +38,7 @@ public class GalleryImageAdapter extends RecyclerView.Adapter<GalleryImageAdapte
 
     // TODO  333 ) Defining a constructor for ReviewAdapter
     public GalleryImageAdapter(Context context,ArrayList<String> imglist,String append) {
+        Log.d(TAG, "GalleryImageAdapter constructor is working");
         this.mContext = context;
         this.galleryImageList = imglist;
         this.mAppend = append;
@@ -48,6 +48,7 @@ public class GalleryImageAdapter extends RecyclerView.Adapter<GalleryImageAdapte
     @NonNull
     @Override
     public GalleryImageAdapter.GalleryImageAdapterViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
+        Log.d(TAG, "GalleryImageAdapterViewHolder onCreateViewHolder is working");
         Context context = viewGroup.getContext();
         int layoutIdForListItem = R.layout.layout_postgridview;
         LayoutInflater inflater = LayoutInflater.from(context);
@@ -60,6 +61,7 @@ public class GalleryImageAdapter extends RecyclerView.Adapter<GalleryImageAdapte
 
     @Override
     public void onBindViewHolder(@NonNull final GalleryImageAdapter.GalleryImageAdapterViewHolder holder, int position) {
+        Log.d(TAG, "onBindViewHolder is working");
         String imageUrl = galleryImageList.get(position);
         imageUrl += mAppend;
         Log.d(TAG, " imageUrl is " + imageUrl);
