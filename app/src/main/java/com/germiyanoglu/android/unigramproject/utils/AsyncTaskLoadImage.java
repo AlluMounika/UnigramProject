@@ -25,6 +25,8 @@ public class AsyncTaskLoadImage extends AsyncTask<String, String, Bitmap> {
     }
 
 
+
+
     @Override
     protected Bitmap doInBackground(String... params) {
         Bitmap bitmap = null;
