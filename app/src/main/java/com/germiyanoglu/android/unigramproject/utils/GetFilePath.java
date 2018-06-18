@@ -20,11 +20,14 @@ public class GetFilePath {
         File file = new File(directory);
         File[] listOfFiles = file.listFiles();
 
-        for(File selectedFile : listOfFiles){
-            if(selectedFile.isDirectory()){
-                pathArray.add(selectedFile.getAbsolutePath());
+        if(listOfFiles != null) {
+            for (File selectedFile : listOfFiles) {
+                if (selectedFile.isDirectory()) {
+                    pathArray.add(selectedFile.getAbsolutePath());
+                }
             }
         }
+
         Log.d(TAG, " getDirectoryPaths : " + pathArray);
         return pathArray;
     }
@@ -36,9 +39,11 @@ public class GetFilePath {
         File file = new File(directory);
         File[] listOfFiles = file.listFiles();
 
-        for(File selectedFile : listOfFiles){
-            if(selectedFile.isDirectory()){
-                pathArray.add(selectedFile.getAbsolutePath());
+        if(listOfFiles != null) {
+            for (File selectedFile : listOfFiles) {
+                if (selectedFile.isDirectory()) {
+                    pathArray.add(selectedFile.getAbsolutePath());
+                }
             }
         }
 
