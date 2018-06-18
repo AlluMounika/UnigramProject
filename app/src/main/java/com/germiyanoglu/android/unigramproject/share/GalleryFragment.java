@@ -58,6 +58,7 @@ public class GalleryFragment extends Fragment {
 
     // TODO : 314 ) Defining location as a directory for spinner
     private ArrayList<String> directories;
+    private String mAppend = "file://";
     private String mSelectedImage;
 
 
@@ -178,7 +179,7 @@ public class GalleryFragment extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
 
-        GalleryImageAdapter galleryImageAdapter = new GalleryImageAdapter(getActivity(),imgURLs);
+        GalleryImageAdapter galleryImageAdapter = new GalleryImageAdapter(getActivity(),imgURLs,mAppend);
         recyclerView.setAdapter(galleryImageAdapter);
         Log.d(TAG, "galleryImageAdapter size: " + galleryImageAdapter.getItemCount());
 
@@ -198,7 +199,7 @@ public class GalleryFragment extends Fragment {
     // TODO  338 ) Dispalying default value in the image view
     private void setImage(String mSelectedImage, ImageView galleryImageView) {
         Log.d(TAG, "setImage: setting image in the imageview");
-        String imageUrl = mSelectedImage;
+        String imageUrl = mAppend + mSelectedImage;
 
         if(TextUtils.isEmpty(imageUrl)){
             setGoneProgressBar();

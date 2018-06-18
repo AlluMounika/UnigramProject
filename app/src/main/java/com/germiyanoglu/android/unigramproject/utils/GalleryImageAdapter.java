@@ -37,10 +37,11 @@ public class GalleryImageAdapter extends RecyclerView.Adapter<GalleryImageAdapte
     }
 
     // TODO  333 ) Defining a constructor for ReviewAdapter
-    public GalleryImageAdapter(Context context,ArrayList<String> imglist) {
+    public GalleryImageAdapter(Context context,ArrayList<String> imglist,String append) {
         Log.d(TAG, "GalleryImageAdapter constructor is working");
         this.mContext = context;
         this.galleryImageList = imglist;
+        this.mAppend = append;
     }
 
 
