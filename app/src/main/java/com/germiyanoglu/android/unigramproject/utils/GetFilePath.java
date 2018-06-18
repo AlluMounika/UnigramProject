@@ -41,7 +41,7 @@ public class GetFilePath {
         Log.d(TAG, " getFilePaths : the size of listOfFiles  " + listOfFiles.length);
         if(listOfFiles != null){
             for (File selectedFile : listOfFiles) {
-                if (selectedFile.isDirectory()) {
+                if (selectedFile.isFile()) {
                     pathArray.add(selectedFile.getAbsolutePath());
                 }
             }

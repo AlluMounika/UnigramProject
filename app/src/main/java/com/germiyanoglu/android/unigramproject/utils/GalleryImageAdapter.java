@@ -28,7 +28,7 @@ public class GalleryImageAdapter extends RecyclerView.Adapter<GalleryImageAdapte
     private ArrayList<String> galleryImageList;
 
     // TODO  337 ) Defining append
-    private String mAppend;
+    private String mAppend ="";
 
 
     // TODO  338 ) Defining OnClickListener
@@ -37,11 +37,10 @@ public class GalleryImageAdapter extends RecyclerView.Adapter<GalleryImageAdapte
     }
 
     // TODO  333 ) Defining a constructor for ReviewAdapter
-    public GalleryImageAdapter(Context context,ArrayList<String> imglist,String append) {
+    public GalleryImageAdapter(Context context,ArrayList<String> imglist) {
         Log.d(TAG, "GalleryImageAdapter constructor is working");
         this.mContext = context;
         this.galleryImageList = imglist;
-        this.mAppend = append;
     }
 
 
@@ -63,7 +62,7 @@ public class GalleryImageAdapter extends RecyclerView.Adapter<GalleryImageAdapte
     public void onBindViewHolder(@NonNull final GalleryImageAdapter.GalleryImageAdapterViewHolder holder, int position) {
         Log.d(TAG, "onBindViewHolder is working");
         String imageUrl = galleryImageList.get(position);
-        imageUrl += mAppend;
+        imageUrl = mAppend + imageUrl;
         Log.d(TAG, " imageUrl is " + imageUrl);
         if(imageUrl==null){
             holder.progressBar.setVisibility(View.GONE);

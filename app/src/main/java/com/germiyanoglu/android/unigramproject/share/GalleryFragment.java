@@ -58,7 +58,6 @@ public class GalleryFragment extends Fragment {
 
     // TODO : 314 ) Defining location as a directory for spinner
     private ArrayList<String> directories;
-    private String mAppend = "file:/";
     private String mSelectedImage;
 
 
@@ -179,7 +178,7 @@ public class GalleryFragment extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
 
-        GalleryImageAdapter galleryImageAdapter = new GalleryImageAdapter(getActivity(),imgURLs,mAppend);
+        GalleryImageAdapter galleryImageAdapter = new GalleryImageAdapter(getActivity(),imgURLs);
         recyclerView.setAdapter(galleryImageAdapter);
         Log.d(TAG, "galleryImageAdapter size: " + galleryImageAdapter.getItemCount());
 
@@ -187,7 +186,7 @@ public class GalleryFragment extends Fragment {
         try{
             // TODO  337 ) Defining first element of array as a default to display it
             mSelectedImage = galleryImageAdapter.firstImageofRecyleView();
-            setImage(mSelectedImage, galleryImageView, mAppend);
+            setImage(mSelectedImage, galleryImageView);
         }catch (ArrayIndexOutOfBoundsException e){
             Log.e(TAG, "setupGridView: ArrayIndexOutOfBoundsException: " +e.getMessage() );
         }
@@ -197,9 +196,9 @@ public class GalleryFragment extends Fragment {
     }
 
     // TODO  338 ) Dispalying default value in the image view
-    private void setImage(String mSelectedImage, ImageView galleryImageView, String mAppend) {
+    private void setImage(String mSelectedImage, ImageView galleryImageView) {
         Log.d(TAG, "setImage: setting image in the imageview");
-        String imageUrl = mAppend + mSelectedImage;
+        String imageUrl = mSelectedImage;
 
         if(TextUtils.isEmpty(imageUrl)){
             setGoneProgressBar();
