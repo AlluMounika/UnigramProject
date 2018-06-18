@@ -179,7 +179,7 @@ public class GalleryFragment extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
 
-        /*GalleryImageAdapter galleryImageAdapter = new GalleryImageAdapter(getActivity(),imgURLs,mAppend);
+        GalleryImageAdapter galleryImageAdapter = new GalleryImageAdapter(getActivity(),imgURLs,mAppend);
         recyclerView.setAdapter(galleryImageAdapter);
         Log.d(TAG, "galleryImageAdapter size: " + galleryImageAdapter.getItemCount());
 
@@ -190,7 +190,8 @@ public class GalleryFragment extends Fragment {
             setImage(mSelectedImage, galleryImageView, mAppend);
         }catch (ArrayIndexOutOfBoundsException e){
             Log.e(TAG, "setupGridView: ArrayIndexOutOfBoundsException: " +e.getMessage() );
-        }*/
+        }
+
 
 
     }
