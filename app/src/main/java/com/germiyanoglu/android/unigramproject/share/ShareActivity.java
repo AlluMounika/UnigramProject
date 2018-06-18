@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.view.ViewPager;
@@ -105,6 +106,7 @@ public class ShareActivity extends AppCompatActivity {
 
     // TODO : 294 ) Defining fragements including gallery and photo for share Activity
     private void defineFragementsforShare(){
+        Log.d(TAG, "defineFragementsforShare is working");
         ShareItemsPagerAdapter adapter =  new ShareItemsPagerAdapter(getSupportFragmentManager());
         adapter.shareAddItemFragement();
 
@@ -124,6 +126,13 @@ public class ShareActivity extends AppCompatActivity {
         return mViewPager.getCurrentItem();
     }
 
+    // TODO  339 ) Opening Tablayout after granting permissions
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
 
+        if (requestCode == PERMISSIONS_CODE) {
+            defineFragementsforShare();
+        }
+    }
 }
 
