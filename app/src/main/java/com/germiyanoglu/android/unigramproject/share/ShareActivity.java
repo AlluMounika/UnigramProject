@@ -65,7 +65,6 @@ public class ShareActivity extends AppCompatActivity {
                 verifyPermissions(new String[]{Permission.getWriteExternalStorage(),
                         Permission.getReadExternalStorage(), Permission.getCAMERA()});
 
-                defineFragementsforShare();
 
             } else {
                 // TODO : 295 ) Calling defineFragementsforShare
@@ -101,6 +100,7 @@ public class ShareActivity extends AppCompatActivity {
                 strings,
                 PERMISSIONS_CODE
         );
+
     }
 
     // TODO : 294 ) Defining fragements including gallery and photo for share Activity
