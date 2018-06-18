@@ -119,7 +119,7 @@ public class GalleryFragment extends Fragment {
 
         // pictures directory
         if (GetFilePath.getDirectoryPaths(filePaths.PICTURES) != null) {
-            directories = GetFilePath.getDirectoryPaths(filePaths.PICTURES);
+            directories.addAll(GetFilePath.getDirectoryPaths(filePaths.PICTURES));
         }
 
         // camera directory
@@ -177,7 +177,7 @@ public class GalleryFragment extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
 
-        GalleryImageAdapter galleryImageAdapter = new GalleryImageAdapter(getActivity(),imgURLs,mAppend);
+        /*GalleryImageAdapter galleryImageAdapter = new GalleryImageAdapter(getActivity(),imgURLs,mAppend);
         recyclerView.setAdapter(galleryImageAdapter);
         Log.d(TAG, "galleryImageAdapter size: " + galleryImageAdapter.getItemCount());
 
@@ -188,7 +188,9 @@ public class GalleryFragment extends Fragment {
             setImage(mSelectedImage, galleryImageView, mAppend);
         }catch (ArrayIndexOutOfBoundsException e){
             Log.e(TAG, "setupGridView: ArrayIndexOutOfBoundsException: " +e.getMessage() );
-        }
+        }*/
+
+
     }
 
     // TODO  338 ) Dispalying default value in the image view

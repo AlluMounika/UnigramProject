@@ -41,6 +41,7 @@ public class GetFilePath {
                 pathArray.add(selectedFile.getAbsolutePath());
             }
         }
+
         Log.d(TAG, " getFilePaths : " + pathArray);
         return pathArray;
     }
