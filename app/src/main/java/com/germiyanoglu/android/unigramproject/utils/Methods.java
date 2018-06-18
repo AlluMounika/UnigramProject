@@ -3,6 +3,9 @@ package com.germiyanoglu.android.unigramproject.utils;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.util.Log;
+import android.view.View;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.germiyanoglu.android.unigramproject.R;
@@ -39,7 +42,7 @@ public class Methods {
     //vars
     private Context mContext;
     private long mPhotoUploadProgress = 0;
-    private String append;
+    private String append = "";
 
 
     public Methods(Context context) {
@@ -242,6 +245,8 @@ public class Methods {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
         Query query = reference.child("user").orderByChild("username").equalTo(userName);
 
+        Log.d(TAG,"query result" + query);
+
         // TODO : 257 ) Defining query listener
         query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -265,7 +270,7 @@ public class Methods {
 
                 // TODO : 182 ) Appending username with random value
                 String mUsername = userName + append;
-
+                Log.d(TAG, "mUsername :   " + userName + append);
                 // TODO : 191 ) Adding new user to firebase
                 addNewUser(email, mUsername, "", "", "");
 
@@ -286,8 +291,8 @@ public class Methods {
     }
 
     // TODO : 170 ) Registering Information to Firebase
-    public void registerEmail(String email, String username, String password) {
-
+    public void registerEmail(String email, String username, String password,final ProgressBar registerProgressBar,final TextView loadingtextView) {
+        Log.d(TAG, "registerEmail is calling");
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
@@ -309,9 +314,10 @@ public class Methods {
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "createUserWithEmail:failure", task.getException());
-                            Toast.makeText(mContext, "Authentication failed.",
+                            Toast.makeText(mContext, "Authentication failed.The email address is already in use by another account.",
                                     Toast.LENGTH_SHORT).show();
-
+                            registerProgressBar.setVisibility(View.GONE);
+                            loadingtextView.setVisibility(View.GONE);
                         }
 
                     }
@@ -342,6 +348,12 @@ public class Methods {
 
     // TODO : 184 ) Adding New User to Firebase
     public void addNewUser(String email, String username, String description, String website, String profile_photo){
+        Log.d(TAG, "addNewUser : " +
+                "\n Email : " + email +
+                "\n Username : " + username +
+                "\n Description : " + description +
+                "\n Website : " + website +
+                "\n Profile Photo : " + profile_photo);
 
         // TODO : 185 ) Getting userId
         String userID = mAuth.getCurrentUser().getUid();

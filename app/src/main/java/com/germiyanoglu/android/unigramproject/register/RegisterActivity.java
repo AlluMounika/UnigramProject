@@ -114,8 +114,8 @@ public class RegisterActivity extends AppCompatActivity {
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
 
-                            String username = usernameEditText.getText().toString();
-                            String email = emailEditText.getText().toString();
+                            String username = usernameEditText.getText().toString().trim();
+                            String email = emailEditText.getText().toString().trim();
 
                             fireabaseMethods.checkIfUsernameExistInRegister(username,email);
                         }
@@ -187,7 +187,8 @@ public class RegisterActivity extends AppCompatActivity {
                     setVisible();
 
                     // TODO : 169 ) Calling registerEmail
-                    fireabaseMethods.registerEmail(email,username,password);
+                    fireabaseMethods.registerEmail(email,username,password,registerProgressBar,loadingtextView);
+
                 }
             }
         });
