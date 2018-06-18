@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -24,6 +25,7 @@ import com.germiyanoglu.android.unigramproject.R;
 import com.germiyanoglu.android.unigramproject.utils.FilePath;
 import com.germiyanoglu.android.unigramproject.utils.GalleryImageAdapter;
 import com.germiyanoglu.android.unigramproject.utils.GetFilePath;
+import com.germiyanoglu.android.unigramproject.utils.RecyclerTouchListener;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
@@ -179,19 +181,31 @@ public class GalleryFragment extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
 
-        GalleryImageAdapter galleryImageAdapter = new GalleryImageAdapter(getActivity(),imgURLs,mAppend);
+        final GalleryImageAdapter galleryImageAdapter = new GalleryImageAdapter(getActivity(),imgURLs,mAppend);
         recyclerView.setAdapter(galleryImageAdapter);
         Log.d(TAG, "galleryImageAdapter size: " + galleryImageAdapter.getItemCount());
 
 
         try{
             // TODO  337 ) Defining first element of array as a default to display it
-            mSelectedImage = galleryImageAdapter.firstImageofRecyleView();
+            mSelectedImage = imgURLs.get(0); // firstImageofRecyleView()
             setImage(mSelectedImage, galleryImageView);
         }catch (ArrayIndexOutOfBoundsException e){
             Log.e(TAG, "setupGridView: ArrayIndexOutOfBoundsException: " +e.getMessage() );
         }
 
+        // TODO  341 ) Determining eah item of recyleview via listening method
+        recyclerView.addOnItemTouchListener(new RecyclerTouchListener(getActivity(), recyclerView, new RecyclerTouchListener.ClickListener() {
+            @Override
+            public void onClick(View view, int position) {
+                mSelectedImage = imgURLs.get(position);
+                setImage(mSelectedImage, galleryImageView);
+            }
+
+            @Override
+            public void onLongClick(View view, int position) {
+            }
+        }));
 
 
     }
@@ -200,12 +214,12 @@ public class GalleryFragment extends Fragment {
     private void setImage(String mSelectedImage, ImageView galleryImageView) {
         Log.d(TAG, "setImage: setting image in the imageview");
         String imageUrl = mAppend + mSelectedImage;
-
+        Log.d(TAG, "setImage: imageUrl is " + imageUrl);
         if(TextUtils.isEmpty(imageUrl)){
             setGoneProgressBar();
         }else{
             setVisibleProgressBar();
-
+            Log.d(TAG, "setImage: Picasso is working");
             Picasso.with(getActivity())
                     .load(imageUrl)
                     .into(galleryImageView, new Callback() {
