@@ -126,6 +126,8 @@ public class GalleryFragment extends Fragment {
         directories.add(filePaths.CAMERA);
 
 
+        Log.d(TAG, " defineDirectoriesInSpinner directories : " + directories.toString());
+
         // TODO : 323 ) Listing directories in spinner
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
                 android.R.layout.simple_spinner_item, directories);
